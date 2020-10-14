@@ -2,8 +2,6 @@ const express = require("express");
 const insertDb = require("./insertdb");
 require("dotenv").config();
 
-const DB_URL = process.env.DB_CREDENTIALS;
-
 app = express();
 app.use(
   express.urlencoded({
@@ -16,10 +14,19 @@ app.get("/", (req, res) => {
   res.send("you are at backend root");
 });
 
-app.post("/register", (req, res) => {
-  console.log(req.body);
-  insertDb(req.body.name, req.body.email, req.body.password);
-  res.send("registration recived!");
+app.post("/register", async (req, res) => {
+  try {
+    const result = await insertDb(
+      req.body.name,
+      req.body.email,
+      req.body.password
+    ).catch(console.dir);
+    if (result) {
+      res.send("registration success!");
+    } else {
+      res.send("registration failed");
+    }
+  } catch (error) {}
 });
 
 app.listen(PORT, (req, res) => {
