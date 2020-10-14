@@ -1,5 +1,8 @@
 const express = require("express");
-const connectDB = require("./connectdb");
+const insertDb = require("./insertdb");
+require("dotenv").config();
+
+const DB_URL = process.env.DB_CREDENTIALS;
 
 app = express();
 app.use(
@@ -15,7 +18,7 @@ app.get("/", (req, res) => {
 
 app.post("/register", (req, res) => {
   console.log(req.body);
-  connectDB();
+  insertDb(req.body.name, req.body.email, req.body.password);
   res.send("registration recived!");
 });
 
