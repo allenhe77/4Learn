@@ -16,3 +16,10 @@
 .container-home {
   margin-top: 10px;
 }
+
+.correct-input {
+  background: lime;
+}
+.incorrect-input {
+  background: red;
+}
