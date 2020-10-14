@@ -19,5 +19,9 @@
   "homepage": "https://github.com/allenhe77/4Learn#readme",
   "devDependencies": {
     "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.5"
   }
 }
