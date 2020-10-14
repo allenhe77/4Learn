@@ -13,17 +13,16 @@ module.exports = function () {
       await client.connect();
 
       // Establish and verify connection
-      await client.db("4learn").collection("userReg");
+      let connectTo = await client.db("4learn").collection("userReg");
       console.log("Connected successfully to server");
 
-      let connectTo = await client.db("4learn");
-      //search
-      let res = await client
-        .db("4learn")
-        .collection("userReg")
-        .find({ name: "allen" });
+      //search the db
+      //   let res = await client
+      //     .db("4learn")
+      //     .collection("userReg")
+      //     .find({ name: "allen" });
 
-      await res.forEach(console.dir);
+      // await res.forEach(console.dir);
     } finally {
       // Ensures that the client will close when you finish/error
       await client.close();
