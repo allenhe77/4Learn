@@ -2,8 +2,7 @@ const { MongoClient, Cursor } = require("mongodb");
 
 module.exports = function () {
   // Connection URI
-  const uri =
-    "mongodb+srv://effy:renjiaxuan@4learndb.hvxoz.mongodb.net/4learn?retryWrites=true&w=majority";
+  const uri = process.env.DB_CREDENTIALS;
   // Create a new MongoClient
   const client = new MongoClient(uri);
 
