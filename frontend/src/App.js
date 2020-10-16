@@ -3,7 +3,11 @@ import { Route, Link, Switch } from "react-router-dom";
 
 import "./App.css";
 import Home from "./Components/Home";
-import Register from "./Components/Register";
+import Register from "./Components/Auth/Register";
+import Login from "./Components/Auth/Login";
+
+import AskQuestion from "./Components/Question/AskQuestion";
+import ViewQuestion from "./Components/Question/ViewQuestion";
 
 function App() {
   return (
@@ -33,12 +37,26 @@ function App() {
           </ul>
         </nav>
       </div>
+
       <Switch>
         <Route path exact="/">
           <Home />
         </Route>
+
         <Route path="/register">
           <Register />
+        </Route>
+
+        <Route path="/login">
+          <Login />
+        </Route>
+
+        <Route path="/askquestion">
+          <AskQuestion />
+        </Route>
+
+        <Route path="/answerquestion">
+          <ViewQuestion />
         </Route>
       </Switch>
     </div>
