@@ -5,10 +5,9 @@ import "./App.css";
 import Home from "./Components/Home";
 import Register from "./Components/Auth/Register";
 import Login from "./Components/Auth/Login";
-
 import AskQuestion from "./Components/Question/AskQuestion";
 import ViewQuestion from "./Components/Question/ViewQuestion";
-
+import Chatroom from "./Components/Chat/Chatroom";
 function App() {
   return (
     <div>
@@ -31,8 +30,12 @@ function App() {
             <Link to="/register">
               <li>Register</li>
             </Link>
-            <Link to="/Login">
+            <Link to="/login">
               <li>Login</li>
+            </Link>
+
+            <Link to="chatroom">
+              <li>Chatroom</li>
             </Link>
           </ul>
         </nav>
@@ -57,6 +60,10 @@ function App() {
 
         <Route path="/answerquestion">
           <ViewQuestion />
+        </Route>
+
+        <Route path="/chatroom">
+          <Chatroom />
         </Route>
       </Switch>
     </div>
