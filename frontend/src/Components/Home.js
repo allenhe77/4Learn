@@ -1,9 +1,14 @@
 import React from "react";
 
+import Left from "./HomeBody/Left";
+
+import LoginRegisterController from "./Controller/LoginRegisterController";
+
 const Home = () => {
   return (
     <div className="container-home">
-      <h3>this is homepge!</h3>
+      <Left />
+      <LoginRegisterController />
     </div>
   );
 };
