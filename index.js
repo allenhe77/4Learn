@@ -8,6 +8,7 @@ const getQuestion = require("./getquestion");
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
 const io = require("socket.io")(http);
+const jwt_decode = require("jwt-decode");
 
 require("dotenv").config();
 
@@ -28,8 +29,22 @@ io.on("connection", (socket) => {
 
   socket.on("clientmessage", (data) => {
     console.log(data.message);
+    console.log(jwt.decode(data.from));
+    socket.broadcast.emit("broadcast", {
+      message: data.message,
+      from: jwt.decode(data.from).username,
+    });
   });
-  socket.emit("server-message", { message: "message from server" });
+
+  setTimeout(
+    () => socket.emit("server-message", { message: "message from server" }),
+    5000
+  );
+  setTimeout(
+    () => socket.emit("server-message", { message: "message2 from server" }),
+    10000
+  );
+
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
@@ -45,7 +60,7 @@ app.post("/register", async (req, res) => {
       req.body.password
     ).catch(console.dir);
     if (result) {
-      res.send("registration success!");
+      res.redirect("/dashboard");
     } else {
       res.send("registration failed");
     }
@@ -70,7 +85,7 @@ app.post("/login", async (req, res) => {
 
     //users[username].refreshToken = refreshToken;
     res.cookie("access-token", accessToken);
-    res.send("login successful");
+    res.redirect("/dashboard");
   } catch {
     res.send("auth failed");
   }
