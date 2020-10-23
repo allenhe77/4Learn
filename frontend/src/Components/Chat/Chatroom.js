@@ -4,21 +4,38 @@ import Message from "./Message";
 
 const Chatroom = () => {
   const [message, setMessage] = useState([]);
-  const [click, setClicked] = useState(true);
+
   // const [socket, setSocket] = useState(0);
   const socket = useRef(0);
   //only run once
 
   useEffect(() => {
-    socket.current = io();
+    //config the socket with re connect
+
+    socket.current = io({
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      randomizationFactor: 0.5,
+    });
 
     socket.current.on("server-message", (data) => {
+      setMessage((message) => [...message, data]);
+    });
+    socket.current.on("broadcast", (data) => {
       setMessage((message) => [...message, data]);
     });
   }, []);
 
   const handleClick = () => {
-    socket.current.emit("clientmessage", { message: "message from client" });
+    socket.current.emit("clientmessage", {
+      message: "message from client",
+      from: document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("access-token"))
+        .split("=")[1],
+    });
   };
 
   useEffect(() => {
@@ -34,7 +51,9 @@ const Chatroom = () => {
     <div>
       <div className="container-chat">
         {message.map((e) => (
-          <p>{e.message} </p>
+          <p>
+            {e.message} ---: {e.from}{" "}
+          </p>
         ))}
       </div>
       <div className="container-chat-enter">
