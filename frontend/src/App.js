@@ -1,49 +1,27 @@
 import React from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import Home from "./Components/Home";
-import Register from "./Components/Auth/Register";
-import Login from "./Components/Auth/Login";
+import Register from "./Components/Auth/AuthRegister";
+import Login from "./Components/Auth/AuthLogin";
 import AskQuestion from "./Components/Question/AskQuestion";
 import ViewQuestion from "./Components/Question/ViewQuestion";
 import Chatroom from "./Components/Chat/Chatroom";
+import Header from "./Components/Navigation/Header";
+import Dashboard from "./Components/Dashboard/Dashboard";
+
 function App() {
   return (
-    <div>
-      <div className="container-topnav">
-        <nav>
-          <ul className="top-nav">
-            <Link to="/">
-              <li>Home</li>
-            </Link>
-            <Link to="/dashboard">
-              <li>Dashboard</li>
-            </Link>
-            <Link to="/askquestion">
-              <li>Ask Question</li>
-            </Link>
-
-            <Link to="/answerquestion">
-              <li>Answer Question</li>
-            </Link>
-            <Link to="/register">
-              <li>Register</li>
-            </Link>
-            <Link to="/login">
-              <li>Login</li>
-            </Link>
-
-            <Link to="chatroom">
-              <li>Chatroom</li>
-            </Link>
-          </ul>
-        </nav>
-      </div>
+    <div className="container">
+      <Header />
 
       <Switch>
         <Route path exact="/">
           <Home />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
 
         <Route path="/register">
