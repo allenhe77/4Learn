@@ -13,16 +13,22 @@ const LoginRegisterController = () => {
 
   return (
     <div className="log-register-controller">
-      {registerButton ? <Register /> : <Login />}
+      {registerButton ? (
+        <Register className="container-register" />
+      ) : (
+        <Login className="container-login" />
+      )}
 
-      <ControllerButton
-        onClick={handleConButtonClick}
-        register={registerButton}
-      />
-      <ControllerButton
-        onClick={handleConButtonClick}
-        register={!registerButton}
-      />
+      <div className="container-switch-button">
+        <ControllerButton
+          onClick={handleConButtonClick}
+          register={registerButton}
+        />
+        <ControllerButton
+          onClick={handleConButtonClick}
+          register={!registerButton}
+        />
+      </div>
     </div>
   );
 };

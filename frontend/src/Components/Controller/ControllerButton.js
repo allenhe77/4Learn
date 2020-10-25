@@ -4,11 +4,11 @@ import ControllerIconEmpty from "../../images/loginregister.png";
 import ControllerIconFilled from "../../images/black-circle.png";
 const ControllerButton = (props) => {
   return (
-    <div>
+    <div className="icon-container">
       {props.register ? (
         <button
           type="button"
-          className="button-controller"
+          className={"button-controller-no-click"}
           onClick={props.onClick}
         >
           {/* need to attirbute the author for this icon */}
@@ -17,7 +17,7 @@ const ControllerButton = (props) => {
       ) : (
         <button
           type="button"
-          className="button-controller"
+          className={"button-controller"}
           onClick={props.onClick}
         >
           {/* need to attirbute the author for this icon */}
