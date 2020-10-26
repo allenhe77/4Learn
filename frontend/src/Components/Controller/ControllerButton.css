@@ -1,0 +1,12 @@
+.icon-controller {
+  width: 30px;
+  height: 30px;
+}
+
+.button-controller {
+  height: 40px;
+}
+.button-controller-no-click {
+  height: 40px;
+  pointer-events: none;
+}

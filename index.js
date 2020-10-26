@@ -1,6 +1,6 @@
 const express = require("express");
-app = express();
-const http = require("http").createServer(app);
+const app = express();
+const http = require("http").Server(app);
 const insertDb = require("./insertdb");
 const searchDb = require("./searchdb");
 const insertQuestion = require("./insertquestion");
@@ -8,6 +8,10 @@ const getQuestion = require("./getquestion");
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
 const io = require("socket.io")(http);
+const { ExpressPeerServer } = require("peer");
+const peerServer = ExpressPeerServer(http, {
+  debug: true,
+});
 const jwt_decode = require("jwt-decode");
 
 require("dotenv").config();
@@ -17,6 +21,9 @@ app.use(
     extended: true,
   })
 );
+
+app.use("/peerjs", peerServer);
+
 const PORT = 5000;
 
 app.get("/", (req, res) => {
@@ -33,6 +40,11 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("broadcast", {
       message: data.message,
       from: jwt.decode(data.from).username,
+    });
+
+    socket.on("join-chat", (userId) => {
+      socket.broadcast.emit("user-joined", userId);
+      console.log(userId);
     });
   });
 
