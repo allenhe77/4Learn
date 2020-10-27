@@ -22,10 +22,8 @@ app.use(
   })
 );
 
-app.use("/peerjs", peerServer);
-
 const PORT = 5000;
-
+app.use("/peerjs", peerServer);
 app.get("/", (req, res) => {
   res.send("you are at backend root");
 });
@@ -41,21 +39,20 @@ io.on("connection", (socket) => {
       message: data.message,
       from: jwt.decode(data.from).username,
     });
-
-    socket.on("join-chat", (userId) => {
-      socket.broadcast.emit("user-joined", userId);
-      console.log(userId);
-    });
   });
 
-  setTimeout(
-    () => socket.emit("server-message", { message: "message from server" }),
-    5000
-  );
-  setTimeout(
-    () => socket.emit("server-message", { message: "message2 from server" }),
-    10000
-  );
+  socket.on("join-chat", (userId) => {
+    socket.broadcast.emit("user-joined", userId);
+    console.log(userId);
+  });
+  // setTimeout(
+  //   () => socket.emit("server-message", { message: "message from server" }),
+  //   5000
+  // );
+  // setTimeout(
+  //   () => socket.emit("server-message", { message: "message2 from server" }),
+  //   10000
+  // );
 
   socket.on("disconnect", () => {
     console.log("user disconnected");

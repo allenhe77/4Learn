@@ -9,7 +9,7 @@ const Chatroom = () => {
   // const [socket, setSocket] = useState(0);
   const socket = useRef(0);
   const peer = useRef(0);
-  //only run once
+  //only run oncejjjjjjjjj
 
   useEffect(() => {
     //config the socket with re connect
@@ -51,32 +51,42 @@ const Chatroom = () => {
   };
 
   useEffect(() => {
+    //it sets up teh audio stream to connect to other user
+    const addAudioStream = (audio, stream) => {
+      audio.srcObject = stream;
+      audio.addEventListener("loadedmetadata", () => {
+        audio.play();
+      });
+    };
+
+    const connectToNewUser = (userId, stream) => {
+      // the stream between clients is constant
+      const call = peer.current.call(userId, stream);
+
+      let audio = document.createElement("audio");
+      call.on("stream", (userAudioStream) => {
+        addAudioStream(audio, userAudioStream);
+      });
+    };
+
     const sendStream = async () => {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: false,
         audio: true,
       });
+      const myAudio = document.createElement("audio");
 
-      socket.current.on("user-joined", (userId, stream) => {
+      let myAudioStream = stream;
+
+      addAudioStream(myAudio, myAudioStream);
+
+      socket.current.on("user-joined", (userId, myAudioStream) => {
+        console.log("new user!");
+        console.log(stream);
         connectToNewUser(userId, stream);
       });
-
-      const addAudioStream = (audio, stream) => {
-        audio.srcObject = stream;
-        audio.addEventListener("loadedmetadata", () => {
-          audio.play();
-        });
-      };
-
-      const connectToNewUser = (userId, stream) => {
-        // the stream between clients is constant
-        const call = peer.call(userId, stream);
-        const audio = document.createElement("audio");
-        call.on("stream", (userAudioStream) => {
-          addAudioStream(audio, userAudioStream);
-        });
-      };
     };
+
     sendStream();
   }, []);
 
