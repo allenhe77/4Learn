@@ -2,6 +2,8 @@ import React from "react";
 
 import ControllerIconEmpty from "../../images/loginregister.png";
 import ControllerIconFilled from "../../images/black-circle.png";
+import "./ControllerButton.css";
+
 const ControllerButton = (props) => {
   return (
     <div className="icon-container">

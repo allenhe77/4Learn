@@ -1,6 +1,6 @@
 const express = require("express");
-app = express();
-const http = require("http").createServer(app);
+const app = express();
+const http = require("http").Server(app);
 const insertDb = require("./insertdb");
 const searchDb = require("./searchdb");
 const insertQuestion = require("./insertquestion");
@@ -8,6 +8,10 @@ const getQuestion = require("./getquestion");
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
 const io = require("socket.io")(http);
+const { ExpressPeerServer } = require("peer");
+const peerServer = ExpressPeerServer(http, {
+  debug: true,
+});
 const jwt_decode = require("jwt-decode");
 
 require("dotenv").config();
@@ -17,8 +21,9 @@ app.use(
     extended: true,
   })
 );
-const PORT = 5000;
 
+const PORT = 5000;
+app.use("/peerjs", peerServer);
 app.get("/", (req, res) => {
   res.send("you are at backend root");
 });
@@ -36,14 +41,18 @@ io.on("connection", (socket) => {
     });
   });
 
-  setTimeout(
-    () => socket.emit("server-message", { message: "message from server" }),
-    5000
-  );
-  setTimeout(
-    () => socket.emit("server-message", { message: "message2 from server" }),
-    10000
-  );
+  socket.on("join-chat", (userId) => {
+    socket.broadcast.emit("user-joined", userId);
+    console.log(userId);
+  });
+  // setTimeout(
+  //   () => socket.emit("server-message", { message: "message from server" }),
+  //   5000
+  // );
+  // setTimeout(
+  //   () => socket.emit("server-message", { message: "message2 from server" }),
+  //   10000
+  // );
 
   socket.on("disconnect", () => {
     console.log("user disconnected");

@@ -1,20 +1,18 @@
-.container-topnav {
-  background: burlywood;
-}
-.top-nav {
-  list-style: none;
-  display: flex;
-}
-.top-nav li {
-  width: 200px;
-  text-align: right;
-}
-.top-nav li:hover {
-  background: violet;
-}
-
 .container-home {
   margin-top: 10px;
+  background: lavender;
+  display: flex;
+}
+
+.container-home button {
+  background: red;
+}
+
+.container-image {
+}
+.container-image img {
+  width: 1000px;
+  height: 700px;
 }
 
 .correct-input {
@@ -44,4 +42,11 @@
 .container-view-question:hover {
   transform: scale(1.2);
   transition-delay: 0.11s;
+}
+
+.container-chat {
+  border: 1px;
+  width: 1000px;
+  height: 700px;
+  background: lavender;
 }

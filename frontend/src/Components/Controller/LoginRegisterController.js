@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Login from "../HomeBody/Login";
 import Register from "../HomeBody/Register";
 import ControllerButton from "./ControllerButton";
+import "./LoginRegisterController.css";
 
 const LoginRegisterController = () => {
   const [registerButton, setRegisterButton] = useState(true);

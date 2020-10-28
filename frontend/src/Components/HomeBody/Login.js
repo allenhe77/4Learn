@@ -5,7 +5,7 @@ const Login = () => {
   const [emailInput, setEmailInput] = useState("");
   const [passInput, setPassInput] = useState("");
   return (
-    <div className="login">
+    <div className="container-login">
       <h3>Login Page</h3>
       <br />
       <form action="/login" method="POST">

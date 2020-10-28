@@ -1,0 +1,27 @@
+.container-topnav {
+  background: burlywood;
+  width: 100%;
+  height: 50px;
+}
+
+.top-nav {
+  list-style: none;
+  display: flex;
+  width: 40%;
+  margin: 0 auto;
+}
+.top-nav li {
+  width: 200px;
+  text-align: right;
+  font-size: 20px;
+  font-family: "Tisa";
+  font-weight: bold;
+}
+
+.top-nav a {
+  text-decoration: none;
+}
+
+.top-nav li:hover {
+  background: violet;
+}
