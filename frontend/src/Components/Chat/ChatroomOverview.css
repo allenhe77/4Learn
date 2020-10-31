@@ -1,0 +1,17 @@
+.chatroom-overview-body {
+  display: flex;
+  justify-content: center;
+
+  background: lavender;
+}
+.chatroom-overview-left {
+  width: 500px;
+  height: 700px;
+  background: rebeccapurple;
+  margin-right: 5em;
+}
+.chatroom-overview-right {
+  width: 500px;
+  height: 700px;
+  background: lightcoral;
+}
