@@ -5,25 +5,30 @@ const insertDb = require("./insertdb");
 const searchDb = require("./searchdb");
 const insertQuestion = require("./insertquestion");
 const getQuestion = require("./getquestion");
+const queryWorkspace = require("./querworkspace");
+const createChatroom = require("./createchatroom");
+const getChatroomList = require("./getchatroomlist");
+const getQuestionList = require("./getquestionlist");
+const saveUserWork = require("./saveuserwork");
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
 const io = require("socket.io")(http);
-const { ExpressPeerServer } = require("peer");
-const peerServer = ExpressPeerServer(http, {
-  debug: true,
-});
+const { v4: uuidv4 } = require("uuid");
+
 const jwt_decode = require("jwt-decode");
+const querworkspace = require("./querworkspace");
 
 require("dotenv").config();
 
 app.use(
   express.urlencoded({
     extended: true,
-  })
+  }),
+  express.json()
 );
 
 const PORT = 5000;
-app.use("/peerjs", peerServer);
+
 app.get("/", (req, res) => {
   res.send("you are at backend root");
 });
@@ -39,12 +44,22 @@ io.on("connection", (socket) => {
       message: data.message,
       from: jwt.decode(data.from).username,
     });
+
+    console.log(jwt.decode(data.from));
   });
 
-  socket.on("join-chat", (userId) => {
-    socket.broadcast.emit("user-joined", userId);
-    console.log(userId);
+  socket.on("chat-message", (data) => {
+    socket.broadcast.emit("broadcast", {
+      message: data.message,
+      from: jwt.decode(data.from).username,
+    });
+    console.log(jwt.decode(data.from));
   });
+
+  // socket.on("join-chat", (userId) => {
+  //   socket.broadcast.emit("user-joined", userId);
+  //   console.log(userId);
+  // });
   // setTimeout(
   //   () => socket.emit("server-message", { message: "message from server" }),
   //   5000
@@ -77,26 +92,28 @@ app.post("/register", async (req, res) => {
 });
 
 //middleware auth, login path not working
-app.use("/login", auth);
+
+//disable auth middleware for now
+// app.use("/login", auth);
 
 app.post("/login", async (req, res) => {
   try {
     const loginInfo = await searchDb(req.body.email, req.body.password);
 
-    let username = req.body.email;
-    let password = req.body.password;
-    let payload = { username: username };
-    const users = [];
+    // let username = req.body.email;
+    // let password = req.body.password;
+    let payload = { userName: loginInfo };
 
     let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: process.env.ACCESS_TOKEN_LIFE,
     });
 
     //users[username].refreshToken = refreshToken;
-    res.cookie("access-token", accessToken);
+    res.cookie("access-token", accessToken, { maxAge: 600000000 });
     res.redirect("/dashboard");
-  } catch {
-    res.send("auth failed");
+  } catch (err) {
+    console.error(err);
+    res.send(err);
   }
 });
 
@@ -117,6 +134,60 @@ app.get("/answerquestion", async (req, res) => {
 
   res.json(result);
 });
+
+app.get("/queryworkspace", async (req, res) => {
+  const data = [];
+  const result = await queryWorkspace(data);
+  console.log(result);
+  res.json(result);
+});
+
+app.post("/createchatroom", async (req, res) => {
+  const roomId = uuidv4();
+  const result = await createChatroom(roomId, req.body.roomname);
+  result ? res.redirect(`/chatroom/${roomId}`) : res.send("failed");
+});
+
+app.get("/enterchatroom/:roomId/:userToken", (req, res) => {
+  const roomId = req.params.roomId;
+  const userToken = req.params.userToken;
+  console.log(userToken);
+  const userName = jwt_decode(userToken).userName;
+  console.log(userName);
+
+  //send client roomid and username entering the chatroom
+
+  res.redirect(`/chatroom/${roomId}/${userName}`);
+});
+
+app.get("/chatroomlist", async (req, res) => {
+  const data = [];
+  const result = await getChatroomList(data);
+  res.json(result);
+});
+
+app.get(`/getworkspacequestions/:roomId`, async (req, res) => {
+  const data = [];
+  const roomId = req.params.roomId;
+  const result = await getQuestionList(data, roomId);
+
+  const questions = result[0].questions;
+
+  res.json(questions);
+});
+
+app.post(
+  `/usersavework/:roomId/:currentQuestion/:userName`,
+  async (req, res) => {
+    userWork = req.body.userWork;
+    const roomId = req.params.roomId;
+    const currentQ = req.params.currentQuestion;
+    const userName = req.params.userName;
+    result = await saveUserWork(roomId, currentQ, userName, userWork);
+    console.log(result);
+    res.send("siccess");
+  }
+);
 
 http.listen(PORT, (req, res) => {
   console.log(`listening on port ${PORT}`);
