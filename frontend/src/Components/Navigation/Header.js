@@ -29,7 +29,7 @@ const Header = () => {
             <li>Login</li>
           </Link>
 
-          <Link to="chatroom">
+          <Link to="/chatroomoverview">
             <li>Chatroom</li>
           </Link>
         </ul>
