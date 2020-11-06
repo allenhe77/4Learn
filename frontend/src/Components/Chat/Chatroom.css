@@ -1,0 +1,32 @@
+.container-workspace-chatroom {
+  background: lightpink;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container-workspace {
+  width: 1000px;
+  height: 730px;
+  background: rebeccapurple;
+  margin-right: 40px;
+  border-radius: 3%;
+}
+
+.container-chat {
+  border: 1px;
+  width: 500px;
+  height: 600px;
+  background: lavender;
+
+  border-radius: 3%;
+}
+
+.container-chat-enter {
+  background: lightskyblue;
+  height: 100px;
+}
+.container-chat-enter textarea {
+  height: 7em;
+  width: 35em;
+}

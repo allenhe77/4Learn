@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
-import Message from "./Message";
-import Peer from "peerjs";
+import "./Chatroom.css";
+import QuestionButton from "./QuestionButton";
+import Workspace from "./Workspace";
 
-const Chatroom = () => {
+const Chatroom = (props) => {
+  console.log(props.userName);
   const [message, setMessage] = useState([]);
-
+  const [messageInput, setMessageInput] = useState("");
+  const [userName, setUserName] = useState("");
   // const [socket, setSocket] = useState(0);
   const socket = useRef(0);
-  const peer = useRef(0);
+
   //only run oncejjjjjjjjj
 
   useEffect(() => {
@@ -22,73 +25,35 @@ const Chatroom = () => {
       randomizationFactor: 0.5,
     });
 
-    peer.current = new Peer(undefined, {
-      path: "/peerjs",
-      host: "/",
-      port: "5000",
-    });
-
-    peer.current.on("open", (id) => {
-      socket.current.emit("join-chat", id);
-    });
-
     socket.current.on("server-message", (data) => {
       setMessage((message) => [...message, data]);
     });
     socket.current.on("broadcast", (data) => {
       setMessage((message) => [...message, data]);
     });
+    setUserName(
+      document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("access-token"))
+        .split("=")[1]
+    );
   }, []);
 
   const handleClick = () => {
-    socket.current.emit("clientmessage", {
-      message: "message from client",
-      from: document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("access-token"))
-        .split("=")[1],
+    // socket.current.emit("clientmessage", {
+    // message: "message from client",
+    // from: document.cookie
+    //   .split("; ")
+    //   .find((row) => row.startsWith("access-token"))
+    //   .split("=")[1],
+    // });
+    socket.current.emit("chat-message", {
+      message: messageInput,
+      from: userName,
     });
+
+    setMessageInput("");
   };
-
-  useEffect(() => {
-    //it sets up teh audio stream to connect to other user
-    const addAudioStream = (audio, stream) => {
-      audio.srcObject = stream;
-      audio.addEventListener("loadedmetadata", () => {
-        audio.play();
-      });
-    };
-
-    const connectToNewUser = (userId, stream) => {
-      // the stream between clients is constant
-      const call = peer.current.call(userId, stream);
-
-      let audio = document.createElement("audio");
-      call.on("stream", (userAudioStream) => {
-        addAudioStream(audio, userAudioStream);
-      });
-    };
-
-    const sendStream = async () => {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: false,
-        audio: true,
-      });
-      const myAudio = document.createElement("audio");
-
-      let myAudioStream = stream;
-
-      addAudioStream(myAudio, myAudioStream);
-
-      socket.current.on("user-joined", (userId, myAudioStream) => {
-        console.log("new user!");
-        console.log(stream);
-        connectToNewUser(userId, stream);
-      });
-    };
-
-    sendStream();
-  }, []);
 
   useEffect(() => {
     // const socket = io();
@@ -100,16 +65,31 @@ const Chatroom = () => {
   }, []);
 
   return (
-    <div>
-      <div className="container-chat">
-        {message.map((e) => (
-          <p>
-            {e.message} ---: {e.from}{" "}
-          </p>
-        ))}
-      </div>
-      <div className="container-chat-enter">
-        <button onClick={handleClick}>Send</button>
+    <div className="container-workspace-chatroom">
+      <Workspace
+        roomId={props.match.params.roomId}
+        userName={props.match.params.userName}
+      />
+
+      <div className="container-chatroom">
+        <div className="container-chat">
+          {console.log(message)}
+          {message.map((e) => (
+            <p>
+              {e.message} ---: {e.from}{" "}
+            </p>
+          ))}
+        </div>
+
+        <div className="container-chat-enter">
+          <textarea
+            name="chatmsg"
+            onChange={(e) => setMessageInput(e.target.value)}
+            value={messageInput}
+          ></textarea>
+
+          <button onClick={handleClick}>Send</button>
+        </div>
       </div>
     </div>
   );
