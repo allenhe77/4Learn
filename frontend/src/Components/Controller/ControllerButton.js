@@ -14,7 +14,11 @@ const ControllerButton = (props) => {
           onClick={props.onClick}
         >
           {/* need to attirbute the author for this icon */}
-          <img src={ControllerIconFilled} className="icon-controller"></img>
+          <img
+            src={ControllerIconFilled}
+            className="icon-controller"
+            alt="icon-filled"
+          ></img>
         </button>
       ) : (
         <button
@@ -23,7 +27,11 @@ const ControllerButton = (props) => {
           onClick={props.onClick}
         >
           {/* need to attirbute the author for this icon */}
-          <img src={ControllerIconEmpty} className="icon-controller"></img>
+          <img
+            src={ControllerIconEmpty}
+            className="icon-controller"
+            alt="icon-empty"
+          ></img>
         </button>
       )}
     </div>
