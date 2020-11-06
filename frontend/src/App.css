@@ -43,10 +43,3 @@
   transform: scale(1.2);
   transition-delay: 0.11s;
 }
-
-.container-chat {
-  border: 1px;
-  width: 1000px;
-  height: 700px;
-  background: lavender;
-}

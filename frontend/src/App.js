@@ -10,6 +10,7 @@ import ViewQuestion from "./Components/Question/ViewQuestion";
 import Chatroom from "./Components/Chat/Chatroom";
 import Header from "./Components/Navigation/Header";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import ChatroomOverview from "./Components/Chat/ChatroomOverview";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Header />
 
       <Switch>
-        <Route path exact="/">
+        <Route path="/" exact={true}>
           <Home />
         </Route>
         <Route path="/dashboard">
@@ -40,8 +41,12 @@ function App() {
           <ViewQuestion />
         </Route>
 
-        <Route path="/chatroom">
-          <Chatroom />
+        <Route path="/chatroomoverview">
+          <ChatroomOverview />
+        </Route>
+
+        <Route path="/chatroom/:roomId/:userName" component={Chatroom}>
+          {/* <Chatroom /> */}
         </Route>
       </Switch>
     </div>
