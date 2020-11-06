@@ -19,7 +19,7 @@ module.exports = async function (email, password) {
 
     if (result !== null) {
       successOrFail = true;
-      return true;
+      return result.name;
     }
   } finally {
     await client.close();
