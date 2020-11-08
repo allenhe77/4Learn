@@ -1,8 +1,8 @@
 import React from "react";
-
+import "./UserWorkspaceButton.css";
 const UserWorkspaceButton = (props) => {
   return (
-    <div>
+    <div className="user-workspace-button">
       <button onClick={props.onClick}>{props.user}</button>
     </div>
   );
