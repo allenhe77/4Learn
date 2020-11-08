@@ -10,6 +10,8 @@ const createChatroom = require("./createchatroom");
 const getChatroomList = require("./getchatroomlist");
 const getQuestionList = require("./getquestionlist");
 const saveUserWork = require("./saveuserwork");
+const hostAddQuestion = require("./hostaddquestion");
+
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
 const io = require("socket.io")(http);
@@ -144,7 +146,11 @@ app.get("/queryworkspace", async (req, res) => {
 
 app.post("/createchatroom", async (req, res) => {
   const roomId = uuidv4();
-  const result = await createChatroom(roomId, req.body.roomname);
+  const userToken = req.body.createdBy;
+  const createdBy = jwt_decode(userToken).userName;
+  console.log(req.body.roomName);
+
+  const result = await createChatroom(roomId, req.body.roomName, createdBy);
   result ? res.redirect(`/chatroom/${roomId}`) : res.send("failed");
 });
 
@@ -188,6 +194,15 @@ app.post(
     res.send("siccess");
   }
 );
+
+app.post("/hostaddquestion/:roomId", async (req, res) => {
+  const roomId = req.params.roomId;
+  const question = req.body.questionNumber;
+
+  result = await hostAddQuestion(roomId, question);
+  console.log(result);
+  res.send("added");
+});
 
 http.listen(PORT, (req, res) => {
   console.log(`listening on port ${PORT}`);
