@@ -10,10 +10,9 @@ module.exports = async function (roomId, currentQuestion, userName, userWork) {
 
     const database = client.db("4learn");
     const collection = database.collection("Chatroom");
-    console.log("asdsd");
-
-    // queryString = "" + "questions." + currentQuestion + "." + userName;
-    queryString = "questions.q1.allen";
+    console.log(userWork);
+    queryString = "" + "questions." + currentQuestion;
+    inputString = "" + "questions." + currentQuestion + "." + userName;
     console.log(queryString);
     const result = await collection.updateOne(
       {
@@ -24,14 +23,15 @@ module.exports = async function (roomId, currentQuestion, userName, userWork) {
       },
       {
         $set: {
-          [queryString]: userWork,
+          [inputString]: userWork,
         },
+      },
+      {
+        upsert: true,
       }
     );
-
-    await result.forEach((result) => workArray.push(result));
   } finally {
     await client.close();
-    return workArray;
+    return true;
   }
 };

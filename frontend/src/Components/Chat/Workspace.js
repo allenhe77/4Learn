@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import AddQuestion from "./AddQuestion";
 import IndividualWorkspaceOverview from "./IndividualWorkspaceOverview";
 import QuestionButton from "./QuestionButton";
 import UserEditWork from "./UserEditWork";
 import UserWorkspaceButton from "./UserWorkspaceButton";
+import "./Workspace.css";
 
 const Workspace = (props) => {
   const [questions, setQuestions] = useState([]);
@@ -100,21 +102,23 @@ const Workspace = (props) => {
   };
 
   return (
-    <div>
-      <button>Add question (only for host)</button>
+    <div className="container-workspace">
+      <div>
+        <AddQuestion roomId={props.roomId} />
 
-      {initialRenderQuestion ? (
-        <p>loading ...</p>
-      ) : (
-        <div>
-          <button>Back</button>
+        {initialRenderQuestion ? (
+          <p>loading ...</p>
+        ) : (
+          <div className="container-workspace-question-button">
+            <button>Back</button>
 
-          {Object.keys(questions).map((e) => (
-            <QuestionButton question={e} onClick={() => handleClick(e)} />
-          ))}
-        </div>
-      )}
-
+            {Object.keys(questions).map((e) => (
+              <QuestionButton question={e} onClick={() => handleClick(e)} />
+            ))}
+          </div>
+        )}
+      </div>
+      <hr />
       <div className="user-workspace-overview">
         {/* check is questionController array is empty */}
 
@@ -122,13 +126,16 @@ const Workspace = (props) => {
           <div>
             <button onClick={handleClickAddOwn}> MY own work</button>
             {userAddOwn ? (
-              <UserEditWork onClick={handleClickUserExit} />
+              <UserEditWork
+                onClickExit={handleClickUserExit}
+                onClickSave={handleClickUserSave}
+              />
             ) : (
               <div></div>
             )}
           </div>
         ) : (
-          <div>
+          <div className="container-user-workspace-button">
             <button onClick={handleClickAddOwn}> MY own work</button>
             {userAddOwn ? (
               <UserEditWork
