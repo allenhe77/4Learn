@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 
-module.exports = async function (roomId, roomname) {
+module.exports = async function (roomId, roomname, createdBy) {
   const uri = process.env.DB_CREDENTIALS;
 
   const client = new MongoClient(uri);
@@ -13,7 +13,11 @@ module.exports = async function (roomId, roomname) {
 
     // create js obj received by /register
 
-    const doc = { roomId: roomId, chatroomName: roomname };
+    const doc = {
+      roomId: roomId,
+      chatroomName: roomname,
+      createdBy: createdBy,
+    };
     console.log(roomId);
     const result = await collection.insertOne(doc);
 
