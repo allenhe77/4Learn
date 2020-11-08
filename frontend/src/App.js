@@ -11,6 +11,7 @@ import Chatroom from "./Components/Chat/Chatroom";
 import Header from "./Components/Navigation/Header";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import ChatroomOverview from "./Components/Chat/ChatroomOverview";
+import Admin from "./Components/Admin/Admin";
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
 
         <Route path="/chatroom/:roomId/:userName" component={Chatroom}>
           {/* <Chatroom /> */}
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
       </Switch>
     </div>

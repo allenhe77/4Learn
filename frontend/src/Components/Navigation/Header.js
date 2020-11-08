@@ -32,6 +32,9 @@ const Header = () => {
           <Link to="/chatroomoverview">
             <li>Chatroom</li>
           </Link>
+          <Link to="/admin">
+            <li>Admin Page</li>
+          </Link>
         </ul>
       </nav>
     </div>
