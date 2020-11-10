@@ -11,6 +11,9 @@ const getChatroomList = require("./getchatroomlist");
 const getQuestionList = require("./getquestionlist");
 const saveUserWork = require("./saveuserwork");
 const hostAddQuestion = require("./hostaddquestion");
+const adminQuestion = require("./adminquestion");
+const adminDeletequestion = require("./admindeletequestion");
+const adminViewquestion = require("./adminviewquestion");
 
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
@@ -128,6 +131,30 @@ app.post("/askquestion", async (req, res) => {
   result
     ? res.send("question posted success")
     : res.send("there was an error while posting");
+});
+
+app.get("/adminviewquestion", async (req, res) => {
+  const data = [];
+  const result = await adminViewquestion(data);
+
+  res.json(result);
+});
+
+app.post("/adminquestion", async (req, res) => {
+  const result = await adminQuestion(
+    req.body.title,
+    req.body.area,
+    req.body.detail
+  );
+  result
+    ? res.send("question posted success")
+    : res.send("there was an error while posting");
+});
+
+app.delete("/admindeletequestion", async (req, res) => {
+  const result = await adminDeletequestion(req.body.id);
+
+  res.send("deleted");
 });
 
 app.get("/answerquestion", async (req, res) => {
