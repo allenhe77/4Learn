@@ -1,6 +1,6 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 
-module.exports = async function (roomId, roomname, createdBy) {
+module.exports = async function (id) {
   const uri = process.env.DB_CREDENTIALS;
 
   const client = new MongoClient(uri);
@@ -9,20 +9,16 @@ module.exports = async function (roomId, roomname, createdBy) {
     await client.connect();
 
     const database = client.db("4learn");
-    const collection = database.collection("Chatroom");
+    const collection = database.collection("Admin");
 
     // create js obj received by /register
-
-    const doc = {
-      roomId: roomId,
-      chatroomName: roomname,
-      createdBy: createdBy,
-    };
-    console.log(roomId);
-    const result = await collection.insertOne(doc);
+    console.log(id);
+    const doc = { id: id };
+    const result = await collection.deleteOne({ _id: ObjectId(id) });
 
     console.log(`${result.insertedCount} documents were inserted into db`);
     console.log(result.insertedCount > 0);
+
     if (result.insertedCount > 0) {
       successOrFail = true;
       return true;

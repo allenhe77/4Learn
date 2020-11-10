@@ -22,6 +22,7 @@
   background: red;
 }
 .container-question {
+  flex-wrap: wrap;
   display: flex;
   background: red;
   width: 1500px;

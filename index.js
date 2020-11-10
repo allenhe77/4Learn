@@ -10,6 +10,11 @@ const createChatroom = require("./createchatroom");
 const getChatroomList = require("./getchatroomlist");
 const getQuestionList = require("./getquestionlist");
 const saveUserWork = require("./saveuserwork");
+const hostAddQuestion = require("./hostaddquestion");
+const adminQuestion = require("./adminquestion");
+const adminDeletequestion = require("./admindeletequestion");
+const adminViewquestion = require("./adminviewquestion");
+
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
 const io = require("socket.io")(http);
@@ -137,6 +142,30 @@ app.post("/askquestion", async (req, res) => {
     : res.send("there was an error while posting");
 });
 
+app.get("/adminviewquestion", async (req, res) => {
+  const data = [];
+  const result = await adminViewquestion(data);
+
+  res.json(result);
+});
+
+app.post("/adminquestion", async (req, res) => {
+  const result = await adminQuestion(
+    req.body.title,
+    req.body.area,
+    req.body.detail
+  );
+  result
+    ? res.send("question posted success")
+    : res.send("there was an error while posting");
+});
+
+app.delete("/admindeletequestion", async (req, res) => {
+  const result = await adminDeletequestion(req.body.id);
+
+  res.send("deleted");
+});
+
 app.get("/answerquestion", async (req, res) => {
   const data = [];
   const result = await getQuestion(data);
@@ -153,7 +182,11 @@ app.get("/queryworkspace", async (req, res) => {
 
 app.post("/createchatroom", async (req, res) => {
   const roomId = uuidv4();
-  const result = await createChatroom(roomId, req.body.roomname);
+  const userToken = req.body.createdBy;
+  const createdBy = jwt_decode(userToken).userName;
+  console.log(req.body.roomName);
+
+  const result = await createChatroom(roomId, req.body.roomName, createdBy);
   result ? res.redirect(`/chatroom/${roomId}`) : res.send("failed");
 });
 
@@ -197,6 +230,15 @@ app.post(
     res.send("siccess");
   }
 );
+
+app.post("/hostaddquestion/:roomId", async (req, res) => {
+  const roomId = req.params.roomId;
+  const question = req.body.questionNumber;
+
+  result = await hostAddQuestion(roomId, question);
+  console.log(result);
+  res.send("added");
+});
 
 http.listen(PORT, (req, res) => {
   console.log(`listening on port ${PORT}`);

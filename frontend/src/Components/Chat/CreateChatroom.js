@@ -2,19 +2,33 @@ import React, { useState } from "react";
 
 const CreateChatroom = () => {
   const [roomName, setRoomName] = useState("");
-  const handleclick = (e) => {
-    e.preventDefault();
+  const handleClick = () => {
+    fetch("/createchatroom", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        roomName: roomName,
+        createdBy: document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("access-token"))
+          .split("=")[1],
+      }),
+    }).then((response) => {
+      if (response.redirected) {
+        window.location.href = response.url;
+      }
+    });
   };
   return (
     <div>
-      <form method="POST" action="/createchatroom">
-        <input
-          value={roomName}
-          name="roomname"
-          onChange={(e) => setRoomName(e.target.value)}
-        />
-        <button type="submit">Create Chatroom</button>
-      </form>
+      <input
+        value={roomName}
+        name="roomname"
+        onChange={(e) => setRoomName(e.target.value)}
+      />
+      <button type="button" onClick={handleClick}>
+        Create Chatroom
+      </button>
     </div>
   );
 };

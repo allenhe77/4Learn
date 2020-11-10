@@ -3,7 +3,7 @@ import React from "react";
 const AskQuestion = () => {
   return (
     <div>
-      <form action="/askquestion" method="POST">
+      <form action="/adminquestion" method="POST">
         <label for="title">Question Title</label>
         <input type="text" name="title"></input>
         <label for="area">Question Area</label>

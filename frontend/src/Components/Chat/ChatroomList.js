@@ -3,11 +3,6 @@ import ChatroomListButton from "./ChatroomListButton";
 
 const ChatroomList = () => {
   const [roomList, setRoomList] = useState([]);
-
-  // const [title, setTitle] = useState([]);
-  // const [area, setArea] = useState([]);
-  // const [detail, setDetail] = useState([]);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

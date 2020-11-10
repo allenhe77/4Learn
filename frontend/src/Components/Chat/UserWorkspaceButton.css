@@ -1,0 +1,10 @@
+.user-workspace-button button {
+  width: 70px;
+  height: 80px;
+  background: #03d4f4;
+}
+
+.user-workspace-button {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
