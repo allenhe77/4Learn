@@ -5,12 +5,12 @@ import QuestionButton from "./QuestionButton";
 import Workspace from "./Workspace";
 
 const Chatroom = (props) => {
-  console.log(props.userName);
   const [message, setMessage] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const [userName, setUserName] = useState("");
   // const [socket, setSocket] = useState(0);
   const socket = useRef(0);
+  console.log(props.match.params.userName);
 
   //only run oncejjjjjjjjj
 
@@ -40,13 +40,6 @@ const Chatroom = (props) => {
   }, []);
 
   const handleClick = () => {
-    // socket.current.emit("clientmessage", {
-    // message: "message from client",
-    // from: document.cookie
-    //   .split("; ")
-    //   .find((row) => row.startsWith("access-token"))
-    //   .split("=")[1],
-    // });
     socket.current.emit("chat-message", {
       message: messageInput,
       from: userName,
@@ -76,7 +69,7 @@ const Chatroom = (props) => {
           {console.log(message)}
           {message.map((e) => (
             <p>
-              {e.message} ---: {e.from}{" "}
+              {e.message} ---: {props.match.params.userName}{" "}
             </p>
           ))}
         </div>
