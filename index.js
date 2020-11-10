@@ -118,10 +118,19 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/askquestion", async (req, res) => {
+  const tags = {
+    oAlevel: req.body.oalevel,
+    subject: req.body.subject,
+    year: req.body.year,
+    paperNumber: req.body.paperNumber,
+    month: req.body.month,
+    questionNumber: req.body.questionNumber,
+  };
   const result = await insertQuestion(
     req.body.title,
     req.body.area,
-    req.body.detail
+    req.body.detail,
+    tags
   );
   result
     ? res.send("question posted success")
