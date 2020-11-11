@@ -23,6 +23,7 @@ const Admin = () => {
 
         await resultObj.forEach((element) => {
           tempResult.push(element);
+          console.log(tempResult);
         });
         // setTitle(tempTitle);
         // setArea(tempArea);
@@ -48,6 +49,7 @@ const Admin = () => {
             area={element.area}
             detail={element.detail}
             id={element._id}
+            tags={element.tags}
           />
         ))
       )}

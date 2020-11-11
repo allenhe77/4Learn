@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 
-module.exports = async function (title, area, detail) {
+module.exports = async function (title, area, detail, tags) {
   const uri = process.env.DB_CREDENTIALS;
 
   const client = new MongoClient(uri);
@@ -11,9 +11,19 @@ module.exports = async function (title, area, detail) {
     const database = client.db("4learn");
     const collection = database.collection("Admin");
 
-    // create js obj received by /register
-
-    const doc = { title: title, area: area, detail: detail };
+    const doc = {
+      title: title,
+      area: area,
+      detail: detail,
+      tags: {
+        oAlevel: tags.oAlevel,
+        subject: tags.subject,
+        year: tags.year,
+        paperNumber: tags.paperNumber,
+        month: tags.month,
+        questionNumber: tags.questionNumber,
+      },
+    };
     const result = await collection.insertOne(doc);
 
     console.log(`${result.insertedCount} documents were inserted into db`);

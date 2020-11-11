@@ -122,9 +122,9 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.post("/askquestion", async (req, res) => {
+app.put("/askquestion", async (req, res) => {
   const tags = {
-    oAlevel: req.body.oalevel,
+    oAlevel: req.body.oAlevel,
     subject: req.body.subject,
     year: req.body.year,
     paperNumber: req.body.paperNumber,
@@ -137,6 +137,7 @@ app.post("/askquestion", async (req, res) => {
     req.body.detail,
     tags
   );
+  const deleteResult = await adminDeletequestion(req.body.id);
   result
     ? res.send("question posted success")
     : res.send("there was an error while posting");
@@ -150,11 +151,23 @@ app.get("/adminviewquestion", async (req, res) => {
 });
 
 app.post("/adminquestion", async (req, res) => {
+  const tags = {
+    oAlevel: req.body.oalevel,
+    subject: req.body.subject,
+    year: req.body.year,
+    paperNumber: req.body.paperNumber,
+    month: req.body.month,
+    questionNumber: req.body.questionNumber,
+  };
+  console.log(req.body.id);
+  console.log("adsd");
   const result = await adminQuestion(
     req.body.title,
     req.body.area,
-    req.body.detail
+    req.body.detail,
+    tags
   );
+
   result
     ? res.send("question posted success")
     : res.send("there was an error while posting");
