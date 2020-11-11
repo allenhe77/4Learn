@@ -35,6 +35,9 @@ const Header = () => {
           <Link to="/admin">
             <li>Admin Page</li>
           </Link>
+          <Link to="/resource">
+            <li>Resource Sharing</li>
+          </Link>
         </ul>
       </nav>
     </div>

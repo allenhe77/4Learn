@@ -14,6 +14,8 @@ const hostAddQuestion = require("./hostaddquestion");
 const adminQuestion = require("./adminquestion");
 const adminDeletequestion = require("./admindeletequestion");
 const adminViewquestion = require("./adminviewquestion");
+const uploadResource = require("./uploadresource");
+const getResource = require("./getresource");
 
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
@@ -22,6 +24,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const jwt_decode = require("jwt-decode");
 const querworkspace = require("./querworkspace");
+const { link } = require("fs");
 
 require("dotenv").config();
 
@@ -251,6 +254,24 @@ app.post("/hostaddquestion/:roomId", async (req, res) => {
   result = await hostAddQuestion(roomId, question);
   console.log(result);
   res.send("added");
+});
+
+app.post("/resourceupload", async (req, res) => {
+  console.log("request received");
+  const link = req.body.link;
+  const linkName = req.body.linkName;
+
+  const userName = jwt_decode(req.body.userName).userName;
+  const result = await uploadResource(userName, link, linkName);
+
+  res.send("success");
+});
+
+app.get("/getresource", async (req, res) => {
+  const data = [];
+  const result = await getResource(data);
+  console.log(result);
+  res.json(data);
 });
 
 http.listen(PORT, (req, res) => {
