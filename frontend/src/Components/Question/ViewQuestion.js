@@ -17,21 +17,13 @@ const ViewQuestion = (props) => {
         const databaseResult = await fetch("/answerquestion");
         const resultObj = await databaseResult.json();
         const tempResult = [];
-        // const tempTitle = [];
-        // const tempArea = [];
-        // const tempDetail = [];
 
         // push title into result state
 
         await resultObj.forEach((element) => {
-          // tempTitle.push(element.title);
-          // tempArea.push(element.area);
-          // tempDetail.push(element.detail);
           tempResult.push(element);
         });
-        // setTitle(tempTitle);
-        // setArea(tempArea);
-        // setDetail(tempDetail);
+
         setResult(tempResult);
         setLoading(false);
       }
@@ -52,6 +44,7 @@ const ViewQuestion = (props) => {
             title={element.title}
             area={element.area}
             detail={element.detail}
+            id={element._id}
           />
         ))
       )}
