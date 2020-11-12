@@ -51,8 +51,10 @@ const DisplayLink = (props) => {
         alt="iconForUpvoteDownvote"
         className="icon-downvote"
       ></img>
-      <p>{props.link}</p>
-      <p>{props.linkName}</p>
+
+      <p>
+        <a href={props.link}>{props.linkName}</a>
+      </p>
       <p>{props.userName}</p>
       <p>{props.rating}</p>
       <hr />
