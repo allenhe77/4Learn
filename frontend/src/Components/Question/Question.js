@@ -5,7 +5,6 @@ const Question = (props) => {
   const [answer, setAnswer] = useState("");
 
   const handleClick = () => {
-    console.log("Adasd");
     fetch("/answerquestion", {
       method: "POST",
       headers: {
@@ -34,6 +33,17 @@ const Question = (props) => {
         onChange={(e) => setAnswer(e.target.value)}
       ></textarea>
       <button onClick={handleClick}>Submit Your Asnwer!</button>
+
+      <hr />
+      {props.answer !== undefined ? (
+        Object.keys(props.answer).map((e) => (
+          <p>
+            {e}: {props.answer[e]}
+          </p>
+        ))
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

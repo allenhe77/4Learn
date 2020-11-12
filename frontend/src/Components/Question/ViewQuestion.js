@@ -45,6 +45,8 @@ const ViewQuestion = (props) => {
             area={element.area}
             detail={element.detail}
             id={element._id}
+            answer={element.answer}
+            key={element._id}
           />
         ))
       )}
