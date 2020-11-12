@@ -5,6 +5,7 @@ const insertDb = require("./insertdb");
 const searchDb = require("./searchdb");
 const insertQuestion = require("./insertquestion");
 const getQuestion = require("./getquestion");
+const answerQuestion = require("./answerquestion");
 const queryWorkspace = require("./querworkspace");
 const createChatroom = require("./createchatroom");
 const getChatroomList = require("./getchatroomlist");
@@ -184,6 +185,17 @@ app.get("/answerquestion", async (req, res) => {
   const result = await getQuestion(data);
 
   res.json(result);
+});
+
+app.post("/answerquestion", async (req, res) => {
+  const id = req.body.id;
+  const userName = jwt_decode(req.body.userName).userName;
+  const answer = req.body.answer;
+  console.log(answer);
+
+  const result = await answerQuestion(answer, userName, id);
+
+  res.send("success");
 });
 
 app.get("/queryworkspace", async (req, res) => {
