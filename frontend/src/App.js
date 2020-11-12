@@ -12,6 +12,7 @@ import Header from "./Components/Navigation/Header";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import ChatroomOverview from "./Components/Chat/ChatroomOverview";
 import Admin from "./Components/Admin/Admin";
+import ShareMain from "./Components/ResourceShare/ShareMain";
 
 function App() {
   return (
@@ -51,6 +52,9 @@ function App() {
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route>
+          <ShareMain />
         </Route>
       </Switch>
     </div>
