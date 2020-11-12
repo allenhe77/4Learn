@@ -10,7 +10,6 @@ const Chatroom = (props) => {
   const [userName, setUserName] = useState("");
   // const [socket, setSocket] = useState(0);
   const socket = useRef(0);
-  console.log(props.match.params.userName);
 
   //only run oncejjjjjjjjj
 
@@ -40,6 +39,7 @@ const Chatroom = (props) => {
   }, []);
 
   const handleClick = () => {
+    console.log(userName);
     socket.current.emit("chat-message", {
       message: messageInput,
       from: userName,
@@ -66,10 +66,9 @@ const Chatroom = (props) => {
 
       <div className="container-chatroom">
         <div className="container-chat">
-          {console.log(message)}
           {message.map((e) => (
             <p>
-              {e.message} ---: {props.match.params.userName}{" "}
+              {e.message} ---: {e.from}{" "}
             </p>
           ))}
         </div>
