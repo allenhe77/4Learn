@@ -54,16 +54,14 @@ io.on("connection", (socket) => {
       message: data.message,
       from: jwt.decode(data.from).username,
     });
-
-    console.log(jwt.decode(data.from));
   });
 
   socket.on("chat-message", (data) => {
     socket.broadcast.emit("broadcast", {
       message: data.message,
-      from: jwt.decode(data.from).username,
+      from: jwt.decode(data.from).userName,
     });
-    console.log(jwt.decode(data.from));
+    console.log(jwt.decode(data.from).userName);
   });
 
   // socket.on("join-chat", (userId) => {
