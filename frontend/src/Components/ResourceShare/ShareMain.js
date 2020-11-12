@@ -39,6 +39,8 @@ const ShareMain = () => {
             linkName={e.linkName}
             userName={e.userName}
             key={e._id}
+            id={e._id}
+            rating={e.rate}
           />
         ))
       )}

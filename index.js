@@ -16,6 +16,7 @@ const adminDeletequestion = require("./admindeletequestion");
 const adminViewquestion = require("./adminviewquestion");
 const uploadResource = require("./uploadresource");
 const getResource = require("./getresource");
+const resourceRate = require("./resourcerate");
 
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
@@ -272,6 +273,15 @@ app.get("/getresource", async (req, res) => {
   const result = await getResource(data);
   console.log(result);
   res.json(data);
+});
+
+app.put("/resourcerate", async (req, res) => {
+  const rate = req.body.rate;
+  const userName = req.body.userName;
+  const id = req.body.id;
+  console.log(id);
+  const result = await resourceRate(id, rate);
+  res.send("asd");
 });
 
 http.listen(PORT, (req, res) => {
