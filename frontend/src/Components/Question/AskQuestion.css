@@ -1,0 +1,19 @@
+.ask-question {
+  text-align: center;
+}
+
+.question-title {
+  width: 70em;
+}
+
+.question-detail {
+  width: 70em;
+  height: 50em;
+}
+
+.tags {
+  width: 60em;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+}
