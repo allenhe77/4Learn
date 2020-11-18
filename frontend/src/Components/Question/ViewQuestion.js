@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
+import QuestionTitle from "./QuestionTitle";
 
 const ViewQuestion = (props) => {
   const [result, setResult] = useState([]);
@@ -40,13 +41,22 @@ const ViewQuestion = (props) => {
         <h4>Loading ...</h4>
       ) : (
         result.map((element) => (
-          <Question
+          // <Question
+          //   title={element.title}
+          //   area={element.area}
+          //   detail={element.detail}
+          //   id={element._id}
+          //   answer={element.answer}
+          //   key={element._id}
+          // />
+          <QuestionTitle
             title={element.title}
-            area={element.area}
             detail={element.detail}
             id={element._id}
             answer={element.answer}
+            id={element._id}
             key={element._id}
+            tags={element.tags}
           />
         ))
       )}
