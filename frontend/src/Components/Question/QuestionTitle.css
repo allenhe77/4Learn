@@ -1,0 +1,13 @@
+.question-title p {
+  display: inline-block;
+  width: 1250px;
+  height: 60px;
+}
+
+.question-title h3:hover {
+  cursor: pointer;
+}
+
+.question-title {
+  background: palevioletred;
+}
