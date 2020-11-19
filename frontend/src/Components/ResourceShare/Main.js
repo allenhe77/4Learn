@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import "./Main.css";
+import Link from "./Link";
 import Upload from "./Upload";
-import DisplayLink from "./DisplayLink";
 
-const ShareMain = () => {
+const Main = () => {
   const [uploadYes, setUploadYes] = useState(false);
   const [link, setLinks] = useState([]);
 
@@ -24,27 +25,32 @@ const ShareMain = () => {
 
     getResource();
   }, []);
+
   return (
-    <div className="outer">
-      <button onClick={handleClick}>Upload</button>
+    <div class="outer">
+      <button className="button-upload" onClick={handleClick}>
+        Upload
+      </button>
       {uploadYes ? <Upload exit={handleClickExit} /> : <div></div>}
 
-      {link.length === 0 ? (
-        <div>Loading ...</div>
-      ) : (
-        link.map((e) => (
-          <DisplayLink
-            link={e.link}
-            linkName={e.linkName}
-            userName={e.userName}
-            key={e._id}
-            id={e._id}
-            rating={e.rate}
-          />
-        ))
-      )}
+      <div class="container-link">
+        {link.length === 0 ? (
+          <div>Loading ...</div>
+        ) : (
+          link.map((e) => (
+            <Link
+              link={e.link}
+              linkName={e.linkName}
+              userName={e.userName}
+              key={e._id}
+              id={e._id}
+              rating={e.rate}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 };
 
-export default ShareMain;
+export default Main;

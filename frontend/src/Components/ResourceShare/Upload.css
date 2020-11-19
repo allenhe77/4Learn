@@ -1,0 +1,13 @@
+.container-upload dialog {
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+}
+
+dialog input {
+  margin-bottom: 20px;
+}
+
+dialog button {
+  margin-bottom: 20px;
+}

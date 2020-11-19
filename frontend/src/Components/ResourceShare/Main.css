@@ -1,0 +1,11 @@
+.outer {
+  display: flex;
+  justify-content: center;
+  background: aqua;
+  height: 100vh;
+}
+
+.button-upload {
+  height: 70px;
+  width: 100px;
+}
