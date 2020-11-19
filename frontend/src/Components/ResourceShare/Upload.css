@@ -1,6 +1,7 @@
 .container-upload dialog {
   display: flex;
   flex-direction: column;
+  z-index: 0;
 }
 
 dialog input {
