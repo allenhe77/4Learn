@@ -22,25 +22,7 @@
   background: red;
 }
 .container-question {
-  flex-wrap: wrap;
   display: flex;
-  background: red;
-  width: 1500px;
-  margin: 0 auto;
-}
-
-.container-view-question {
-  background: lightcoral;
-  width: 400px;
-  height: 300px;
-  margin-left: 20px;
-  transition: all 0.25s ease-in-out;
-}
-.container-view-question textarea {
-  width: 200px;
-  height: 150px;
-}
-.container-view-question:hover {
-  transform: scale(1.2);
-  transition-delay: 0.11s;
+  flex-direction: column;
+  align-items: center;
 }
