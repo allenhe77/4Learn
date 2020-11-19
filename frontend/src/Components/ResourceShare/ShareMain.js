@@ -25,7 +25,8 @@ const ShareMain = () => {
     getResource();
   }, []);
   return (
-    <div className="outer">
+    <div>
+      <h1>resourec main page</h1>
       <button onClick={handleClick}>Upload</button>
       {uploadYes ? <Upload exit={handleClickExit} /> : <div></div>}
 

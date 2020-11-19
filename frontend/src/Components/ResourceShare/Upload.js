@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Upload.css";
 
 const Upload = (props) => {
   const [link, setLink] = useState("");
@@ -26,7 +25,7 @@ const Upload = (props) => {
   };
 
   return (
-    <div className="container-upload">
+    <div>
       <dialog open>
         <label htmlFor="resourceName">Link Name</label>
         <input
