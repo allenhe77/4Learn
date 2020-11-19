@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import "./Chatroom.css";
 import QuestionButton from "./QuestionButton";
-import Room from "./Room";
 import Workspace from "./Workspace";
 
 const Chatroom = (props) => {
@@ -66,46 +65,15 @@ const Chatroom = (props) => {
       />
 
       <div className="container-chatroom">
-        {/* <div className="container-chat">
+        <div className="container-chat">
           {message.map((e) => (
             <p>
               {e.message} ---: {e.from}{" "}
             </p>
           ))}
-        </div> */}
-        <div className="outer">
-          <p className="room-title">Chatroom 101 in session!</p>
-
-          <div className="container-message">
-            {message.map((e) => (
-              <div>
-                <p className="user">{e.from}</p>
-                <p className="my-message">{e.message}</p> <br />
-              </div>
-            ))}
-
-            <div className="other-user">
-              <p className="other-message">
-                Other user's messagasd asda sdasd asdad sad asdasd sadasd asdasd
-                asdasd asd ada sda sd as d asde
-              </p>
-              <p>Other User</p>
-            </div>
-          </div>
-
-          <div className="enter-message">
-            <textarea
-              name="chatmsg"
-              onChange={(e) => setMessageInput(e.target.value)}
-              value={messageInput}
-            ></textarea>
-
-            <button className="btn-send" onClick={handleClick}>
-              Send
-            </button>
-          </div>
         </div>
-        {/* <div className="container-chat-enter">
+
+        <div className="container-chat-enter">
           <textarea
             name="chatmsg"
             onChange={(e) => setMessageInput(e.target.value)}
@@ -113,7 +81,7 @@ const Chatroom = (props) => {
           ></textarea>
 
           <button onClick={handleClick}>Send</button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
