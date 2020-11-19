@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import parse from "html-react-parser";
-import AnswerModal from "./AnswerModal";
 
 const Question = (props) => {
   const [answer, setAnswer] = useState("");
-  const [modal, setModal] = useState(false);
 
   const handleClick = () => {
     fetch("/answerquestion", {
@@ -21,13 +19,6 @@ const Question = (props) => {
         id: props.id,
       }),
     });
-  };
-  const handleClickModal = () => {
-    setModal(true);
-  };
-
-  const handleClickExit = () => {
-    setModal(false);
   };
 
   return (
@@ -53,8 +44,6 @@ const Question = (props) => {
       ) : (
         <div></div>
       )}
-      <button onClick={handleClickModal}>Click me to see modal!</button>
-      {modal ? <AnswerModal onExit={handleClickExit} /> : <div></div>}
     </div>
   );
 };
