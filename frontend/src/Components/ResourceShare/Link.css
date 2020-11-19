@@ -1,0 +1,52 @@
+.container-link {
+  background: #4a91fb;
+  width: 868px;
+  height: 463px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inner {
+}
+.desc {
+  display: inline-block;
+  width: 450px;
+  height: 40px;
+  background: #e68df4;
+  border-radius: 10px;
+}
+
+.user {
+  display: inline-block;
+  /* Submitted by User */
+
+  width: 169px;
+  height: 31px;
+
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+
+  color: black;
+}
+
+.inner img {
+  width: 25px;
+  height: 25px;
+}
+
+.inner img:hover {
+  cursor: pointer;
+}
+
+.icon-downvote {
+  transform: rotate(-180deg);
+}
+
+.rating {
+  display: inline-block;
+  width: 20px;
+}
