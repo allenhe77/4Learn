@@ -8,3 +8,9 @@
   display: flex;
   flex-direction: row;
 }
+
+.user-individual-workspace {
+  background: darkcyan;
+  height: 500px;
+  font-size: 25px;
+}

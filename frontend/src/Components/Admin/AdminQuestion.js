@@ -1,5 +1,7 @@
 import React from "react";
 import parse from "html-react-parser";
+import "./AdminQuestion.css";
+
 const AdminQuestion = (props) => {
   console.log(props.tags.oAlevel);
   const handleClickAccept = () => {
@@ -36,13 +38,14 @@ const AdminQuestion = (props) => {
   };
 
   return (
-    <div className="container-view-question">
+    <div className="container-admin-view-question">
       <h4>Title: {props.title}</h4>
 
       <p>{parse(props.detail)}</p>
       <p>{props.tags.subject}</p>
       <button onClick={handleClickAccept}>Accept</button>
       <button onClick={handleClickReject}>Reject</button>
+      <hr />
     </div>
   );
 };

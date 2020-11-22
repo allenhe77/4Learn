@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AdminQuestion from "./AdminQuestion";
+import "./Admin.css";
 
 const Admin = () => {
   const [result, setResult] = useState([]);
@@ -39,7 +40,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <div className="container-question">
+    <div className="container-admin-question">
       {loading ? (
         <h4>Loading ...</h4>
       ) : (

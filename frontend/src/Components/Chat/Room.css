@@ -10,9 +10,14 @@
   text-align: center;
 }
 
-.container-message p {
+.container-chat-message p {
   display: inline-block;
 }
+
+.own-user {
+  background: red;
+}
+
 .my-message {
   width: 400px;
   background: #f0e8e5;

@@ -5,14 +5,14 @@ const Room = (props) => {
     <div className="outer">
       <p className="room-title">Chatroom 101 in session!</p>
 
-      <div className="container-message">
+      <div className="container-chat-message">
         <p className="my-message">
           Messageasdadasdfrgrgtgtgdfgdg asd asdasd asdasdas dasdads asdasd rgr
           grgrgrg rgrg
         </p>{" "}
         {props.message.map((e) => (
           <div>
-            <p className="user">User:</p>
+            <p className="own-user">User:</p>
             <p className="my-message">
               {e.message} {e.from}{" "}
             </p>

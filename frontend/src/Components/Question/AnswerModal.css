@@ -1,12 +1,12 @@
-.outer {
+.outer-answer {
   background: purple;
 }
 
-.outer dialog {
+.outer-answer dialog {
   width: 1000px;
 }
 
-.outer h4 {
+.outer-answer h4 {
   display: inline-block;
   width: 100px;
   background: red;
@@ -17,7 +17,7 @@
   margin-top: 20px;
 }
 
-textarea {
+.outer-answer textarea {
   width: 100%;
   margin-top: 30px;
 }

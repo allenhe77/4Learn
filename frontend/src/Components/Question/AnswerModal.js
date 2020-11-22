@@ -3,7 +3,7 @@ import "./AnswerModal.css";
 
 const AnswerModal = (props) => {
   return (
-    <div className="outer">
+    <div className="outer-answer">
       <dialog open>
         <p>Question Description</p>
 

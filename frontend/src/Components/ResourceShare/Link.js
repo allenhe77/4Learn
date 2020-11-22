@@ -58,7 +58,7 @@ const Link = (props) => {
           <a href={props.link}>{props.linkName}</a>
         </p>
       </div>
-      <p class="user">Submitted by {props.userName}</p>
+      <p class="link-user">Submitted by {props.userName}</p>
     </div>
   );
 };

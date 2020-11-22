@@ -27,7 +27,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div class="outer">
+    <div class="outer-link">
       <button className="button-upload" onClick={handleClick}>
         Upload
       </button>

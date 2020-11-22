@@ -1,0 +1,5 @@
+.container-admin-question {
+  display: flex;
+
+  flex-direction: column;
+}

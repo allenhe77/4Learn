@@ -4,13 +4,13 @@ import "./UserEditWork.css";
 const UserEditWork = (props) => {
   const [userWork, setUserWork] = useState("");
   return (
-    <div>
+    <div className="user-addwork-dialog">
       <dialog open>
         <textarea
           value={userWork}
           onChange={(e) => setUserWork(e.target.value)}
         ></textarea>
-        <button onClick={props.onClickExit}>Exit without saving</button>
+        <button onClick={props.onClickExit}>Exit</button>
         <button onClick={() => props.onClickSave(userWork)}>
           Save my work
         </button>
