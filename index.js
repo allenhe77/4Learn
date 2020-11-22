@@ -111,6 +111,7 @@ app.post("/login", async (req, res) => {
     // let username = req.body.email;
     // let password = req.body.password;
     let payload = { userName: loginInfo };
+    console.log(payload);
 
     let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: process.env.ACCESS_TOKEN_LIFE,
