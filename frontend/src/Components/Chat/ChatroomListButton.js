@@ -1,4 +1,5 @@
 import React from "react";
+import "./ChatroomListButton.css";
 
 const ChatroomListButton = (props) => {
   const handleClick = () => {
@@ -17,7 +18,7 @@ const ChatroomListButton = (props) => {
     });
   };
   return (
-    <div>
+    <div className="chatroom-list-button">
       <button onClick={handleClick}>{props.chatroomname}</button> <br />
     </div>
   );

@@ -1,0 +1,15 @@
+.chatroom-list-button {
+  margin-top: 15px;
+}
+
+.chatroom-list-button button {
+  display: inline-block;
+  width: 250px;
+  height: 35px;
+  font-size: 20px;
+}
+
+.chatroom-list-button button:hover {
+  cursor: pointer;
+  background: lawngreen;
+}

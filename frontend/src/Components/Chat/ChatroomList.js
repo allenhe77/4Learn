@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ChatroomListButton from "./ChatroomListButton";
+import "./ChatroomList.css";
 
 const ChatroomList = () => {
   const [roomList, setRoomList] = useState([]);
@@ -29,7 +30,7 @@ const ChatroomList = () => {
     };
   }, []);
   return (
-    <div>
+    <div className="chatroom-list">
       {loading ? (
         <p>loading ...</p>
       ) : (

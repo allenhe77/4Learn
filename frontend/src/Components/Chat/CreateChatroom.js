@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./CreateChatroom.css";
 
 const CreateChatroom = () => {
   const [roomName, setRoomName] = useState("");
@@ -20,7 +21,7 @@ const CreateChatroom = () => {
     });
   };
   return (
-    <div>
+    <div className="create-chatroom">
       <input
         value={roomName}
         name="roomname"
