@@ -3,7 +3,12 @@
 }
 
 .outer-answer dialog {
-  width: 1000px;
+  width: 1500px;
+  height: 1000px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .outer-answer h4 {
@@ -12,7 +17,7 @@
   background: red;
 }
 .answer {
-  height: 150px;
+  height: 500px;
   background: pink;
   margin-top: 20px;
 }

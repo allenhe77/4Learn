@@ -9,5 +9,15 @@
 }
 
 .question-title {
-  background: palevioletred;
+  border: 3px solid grey;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.question-title hr {
+  color: black;
+}
+
+.question-title h4 {
+  text-align: center;
 }

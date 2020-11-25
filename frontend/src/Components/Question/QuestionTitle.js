@@ -17,6 +17,7 @@ const QuestionTitle = (props) => {
       <h3 onClick={handleClickModal}>{props.title}</h3>
       <p>{props.detail}</p>
 
+      <br />
       {modal ? (
         <AnswerModal
           exit={handleClickExit}

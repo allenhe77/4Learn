@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
 import QuestionTitle from "./QuestionTitle";
+import "./ViewQuestion.css";
 
 const ViewQuestion = (props) => {
   const [result, setResult] = useState([]);
@@ -37,6 +38,7 @@ const ViewQuestion = (props) => {
 
   return (
     <div className="container-question">
+      <h4>Questions</h4> <hr />
       {loading ? (
         <h4>Loading ...</h4>
       ) : (
