@@ -45,7 +45,6 @@ const AdminQuestion = (props) => {
       <p>{props.tags.subject}</p>
       <button onClick={handleClickAccept}>Accept</button>
       <button onClick={handleClickReject}>Reject</button>
-      <hr />
     </div>
   );
 };

@@ -10,7 +10,15 @@
 }
 
 .user-individual-workspace {
-  background: darkcyan;
-  height: 500px;
+  margin-top: 15px;
+  height: 450px;
   font-size: 25px;
+  border: 1px solid black;
+  border-radius: 6px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.button-back {
+  width: 80px;
+  height: 65px;
 }

@@ -8,7 +8,7 @@
 .container-workspace {
   width: 1000px;
   height: 730px;
-  background: rebeccapurple;
+  background: whitesmoke;
   margin-right: 40px;
   border-radius: 3%;
 }
@@ -43,6 +43,11 @@
   text-align: center;
 }
 
+.container-message {
+  display: flex;
+  flex-direction: column;
+}
+
 .container-message p {
   display: inline-block;
 }
@@ -51,6 +56,9 @@
   background: #f0e8e5;
   border-radius: 10px;
   word-break: break-all;
+  margin-bottom: 10px;
+  min-height: 35px;
+  overflow: hidden;
   margin-bottom: 10px;
 }
 
@@ -67,6 +75,10 @@
   text-align: right;
   border-radius: 10px;
   word-break: break-all;
+  text-align: right;
+  min-height: 35px;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 .enter-message {
   margin-top: auto;

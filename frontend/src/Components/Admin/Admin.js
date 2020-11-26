@@ -41,6 +41,7 @@ const Admin = () => {
 
   return (
     <div className="container-admin-question">
+      <h3>Questions to be accepted</h3>
       {loading ? (
         <h4>Loading ...</h4>
       ) : (

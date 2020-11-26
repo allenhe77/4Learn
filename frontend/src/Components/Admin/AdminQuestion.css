@@ -1,4 +1,13 @@
 .container-admin-view-question {
   margin-top: 20px;
-  background: cyan;
+  width: 1000px;
+  height: 100px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.container-admin-view-question button {
+  width: 150px;
+  height: 30px;
 }

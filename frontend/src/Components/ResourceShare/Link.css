@@ -1,11 +1,13 @@
 .container-link {
   background: #4a91fb;
   width: 868px;
-  height: 463px;
+
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 463px;
+  overflow: hidden;
 }
 .inner {
 }
@@ -15,6 +17,7 @@
   height: 40px;
   background: #e68df4;
   border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .link-user {
@@ -27,7 +30,7 @@
   font-family: Roboto;
   font-style: italic;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 20px;
   line-height: 14px;
 
   color: black;

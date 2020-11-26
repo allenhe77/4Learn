@@ -47,20 +47,21 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log("user connected");
 
-  socket.on("clientmessage", (data) => {
-    console.log(data.message);
-    console.log(jwt.decode(data.from));
-    socket.broadcast.emit("broadcast", {
-      message: data.message,
-      from: jwt.decode(data.from).username,
-    });
-  });
+  // socket.on("clientmessage", (data) => {
+  //   console.log(data.message);
+  //   console.log(jwt.decode(data.from));
+  //   socket.broadcast.emit("broadcast", {
+  //     message: data.message,
+  //     from: jwt.decode(data.from).username,
+  //   });
+  // });
 
   socket.on("chat-message", (data) => {
     socket.broadcast.emit("broadcast", {
       message: data.message,
       from: jwt.decode(data.from).userName,
     });
+
     console.log(jwt.decode(data.from).userName);
   });
 

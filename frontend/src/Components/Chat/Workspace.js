@@ -110,7 +110,7 @@ const Workspace = (props) => {
           <p>loading ...</p>
         ) : (
           <div className="container-workspace-question-button">
-            <button>Back</button>
+            <button className="button-back">Back</button>
 
             {Object.keys(questions).map((e) => (
               <QuestionButton question={e} onClick={() => handleClick(e)} />
@@ -157,7 +157,7 @@ const Workspace = (props) => {
 
       <div className="user-individual-workspace">
         {/* display a user's work */}
-        <h4>{userWorkspace}</h4>
+        <h4>{userWorkspace} </h4>
       </div>
     </div>
   );

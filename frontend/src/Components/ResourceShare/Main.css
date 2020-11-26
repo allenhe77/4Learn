@@ -3,9 +3,17 @@
   justify-content: center;
   background: aqua;
   height: 100vh;
+  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .button-upload {
   height: 70px;
   width: 100px;
+}
+
+.outer-link h3 {
+  font-size: 30px;
 }

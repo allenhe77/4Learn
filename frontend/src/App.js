@@ -12,7 +12,7 @@ import Header from "./Components/Navigation/Header";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import ChatroomOverview from "./Components/Chat/ChatroomOverview";
 import Admin from "./Components/Admin/Admin";
-import ShareMain from "./Components/ResourceShare/ShareMain";
+
 import Main from "./Components/ResourceShare/Main";
 
 function App() {

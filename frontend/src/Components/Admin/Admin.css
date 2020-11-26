@@ -3,3 +3,8 @@
 
   flex-direction: column;
 }
+
+.container-admin-question h3 {
+  text-align: center;
+  font-size: 30px;
+}

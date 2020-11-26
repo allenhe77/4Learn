@@ -45,7 +45,13 @@ const Chatroom = (props) => {
       message: messageInput,
       from: userName,
     });
-
+    setMessage((message) => [
+      ...message,
+      {
+        message: messageInput,
+        from: "myown",
+      },
+    ]);
     setMessageInput("");
   };
 
@@ -79,18 +85,30 @@ const Chatroom = (props) => {
           <div className="container-message">
             {message.map((e) => (
               <div>
-                <p className="user">{e.from}</p>
-                <p className="my-message">{e.message}</p> <br />
+                {/* <p className="user">{e.from}</p>
+                <p className="my-message">{e.message}</p> <br /> */}
+
+                {e.from === "myown" ? (
+                  <div>
+                    <p className="user"> Me </p>{" "}
+                    <p className="my-message">{e.message}</p>{" "}
+                  </div>
+                ) : (
+                  <div>
+                    <p className="other-user">{e.from}</p>{" "}
+                    <p className="other-message">{e.message}</p> <br />
+                  </div>
+                )}
               </div>
             ))}
 
-            <div className="other-user">
+            {/* <div className="other-user">
               <p className="other-message">
                 Other user's messagasd asda sdasd asdad sad asdasd sadasd asdasd
-                asdasd asd ada sda sd as d asde
+                asdasd asd ada sda sd as d asdsdasdsde
               </p>
               <p>Other User</p>
-            </div>
+            </div> */}
           </div>
 
           <div className="enter-message">
