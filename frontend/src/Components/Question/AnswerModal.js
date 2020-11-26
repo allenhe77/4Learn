@@ -23,7 +23,7 @@ const AnswerModal = (props) => {
         <textarea value="enter you answer here!"></textarea>
         <div className="buttons">
           <button onClick={props.exit}>Exit</button>
-          <button>Save</button>
+          <button>Submit</button>
         </div>
       </dialog>
     </div>

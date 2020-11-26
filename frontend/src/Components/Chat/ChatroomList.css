@@ -3,3 +3,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+.chatroom-list h3 {
+  font-size: 30px;
+}
