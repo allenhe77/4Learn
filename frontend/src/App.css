@@ -19,7 +19,6 @@
   background: lime;
 }
 .incorrect-input {
-  background: red;
 }
 .container-question {
   display: flex;

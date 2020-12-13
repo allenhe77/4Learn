@@ -9,16 +9,21 @@ const AnswerModal = (props) => {
         <div className="wrapper-questions">
           {Object.keys(props.tags).map((e) => (
             <h5>
-              {e + ":"} . {props.tags[e]}
+              {console.log(props.tags[e])}
+              {e + ":"} {props.tags[e]}
             </h5>
           ))}
         </div>
 
-        {Object.keys(props.answer).map((e) => (
-          <div className="answer">
-            {e + ":"} {props.answer[e]}
-          </div>
-        ))}
+        {props.answer == null ? (
+          <div></div>
+        ) : (
+          Object.keys(props.answer).map((e) => (
+            <div className="answer">
+              {e + ":"} {props.answer[e]}
+            </div>
+          ))
+        )}
 
         <textarea value="enter you answer here!"></textarea>
         <div className="buttons">

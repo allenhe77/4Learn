@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.css"
 
 const Login = () => {
   const [nameInput, setNameInput] = useState("");
@@ -48,7 +49,7 @@ const Login = () => {
         <br />
         <button type="submit" name="submit">
           {" "}
-          submit
+          Login
         </button>
       </form>
     </div>

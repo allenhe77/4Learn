@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Register.css"
 
 const Register = () => {
   const [nameInput, setNameInput] = useState("");
@@ -47,7 +48,7 @@ const Register = () => {
         <br />
         <button type="submit" name="submit">
           {" "}
-          submit
+          Register
         </button>
       </form>
     </div>

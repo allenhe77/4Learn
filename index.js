@@ -107,6 +107,7 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
+   
     const loginInfo = await searchDb(req.body.email, req.body.password);
 
     // let username = req.body.email;
@@ -115,7 +116,7 @@ app.post("/login", async (req, res) => {
     console.log(payload);
 
     let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: process.env.ACCESS_TOKEN_LIFE,
+      expiresIn:"5d",
     });
 
     //users[username].refreshToken = refreshToken;

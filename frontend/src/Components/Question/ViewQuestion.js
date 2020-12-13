@@ -38,7 +38,7 @@ const ViewQuestion = (props) => {
 
   return (
     <div className="container-question">
-      <h4>Questions</h4> <hr />
+      <h4>Pick A Question To Answer</h4> <hr />
       {loading ? (
         <h4>Loading ...</h4>
       ) : (
