@@ -8,7 +8,8 @@
     "start": "nodemon index.js",
     "server": "nodemon index.js --ignore client",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "jwt-decode": "^3.0.0",
     "mongodb": "^3.6.2",
     "nodemon": "^2.0.5",
+    "path": "^0.12.7",
     "socket.io": "^2.3.0",
     "uuid": "^8.3.1"
   }

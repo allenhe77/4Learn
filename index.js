@@ -18,6 +18,7 @@ const adminViewquestion = require("./adminviewquestion");
 const uploadResource = require("./uploadresource");
 const getResource = require("./getresource");
 const resourceRate = require("./resourcerate");
+const path = require("path");
 
 const auth = require("./auth");
 const jwt = require("jsonwebtoken");
@@ -39,9 +40,9 @@ app.use(
 
 const PORT = process.env.PORT || 5000;
 
-app.get("/", (req, res) => {
-  res.send("you are at backend root");
-});
+// app.get("/", (req, res) => {
+//   res.send("you are at backend root");
+// });
 
 // websocket io for chatroom
 io.on("connection", (socket) => {
@@ -295,6 +296,16 @@ app.put("/resourcerate", async (req, res) => {
   const result = await resourceRate(id, rate);
   res.send("asd");
 });
+
+//serve static assets in production
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
 http.listen(PORT, (req, res) => {
   console.log(`listening on port ${PORT}`);
