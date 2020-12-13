@@ -308,5 +308,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 http.listen(PORT, (req, res) => {
-  console.log(`listening on port ${PORT}`);
+  console.log(`listening on ports ${PORT}`);
 });
