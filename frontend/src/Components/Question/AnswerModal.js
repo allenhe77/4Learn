@@ -7,12 +7,16 @@ const AnswerModal = (props) => {
       <dialog open>
         <p className="question-desc">Question Description</p>
         <div className="wrapper-questions">
-          {Object.keys(props.tags).map((e) => (
-            <h5>
-              {console.log(props.tags[e])}
-              {e + ":"} {props.tags[e]}
-            </h5>
-          ))}
+          {props.tags == null ? (
+            <div></div>
+          ) : (
+            Object.keys(props.tags).map((e) => (
+              <h5>
+                {console.log(props.tags[e])}
+                {e + ":"} {props.tags[e]}
+              </h5>
+            ))
+          )}
         </div>
 
         {props.answer == null ? (

@@ -107,7 +107,6 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
-   
     const loginInfo = await searchDb(req.body.email, req.body.password);
 
     // let username = req.body.email;
@@ -116,7 +115,7 @@ app.post("/login", async (req, res) => {
     console.log(payload);
 
     let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn:"5d",
+      expiresIn: "5d",
     });
 
     //users[username].refreshToken = refreshToken;
@@ -175,7 +174,7 @@ app.post("/adminquestion", async (req, res) => {
   );
 
   result
-    ? res.send("question posted success")
+    ? res.redirect("/answerquestion")
     : res.send("there was an error while posting");
 });
 
@@ -217,7 +216,7 @@ app.post("/createchatroom", async (req, res) => {
   console.log(req.body.roomName);
 
   const result = await createChatroom(roomId, req.body.roomName, createdBy);
-  result ? res.redirect(`/chatroom/${roomId}`) : res.send("failed");
+  result ? res.redirect(`/chatroomoverview`) : res.send("failed");
 });
 
 app.get("/enterchatroom/:roomId/:userToken", (req, res) => {
