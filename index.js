@@ -109,7 +109,7 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
-    const loginInfo = await searchDb(req.body.email, req.body.password);
+    const loginInfo = await searchDb(req.body.email, md5(req.body.password));
 
     // let username = req.body.email;
     // let password = req.body.password;
