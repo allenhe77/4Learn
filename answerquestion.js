@@ -26,7 +26,6 @@ module.exports = async function (answer, userName, id) {
         upsert: true,
       }
     );
-    console.log(result);
   } finally {
     await client.close();
     return true;
