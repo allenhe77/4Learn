@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "./Register.css"
+import "./Register.css";
+
+import md5 from "md5";
 
 const Register = () => {
   const [nameInput, setNameInput] = useState("");
