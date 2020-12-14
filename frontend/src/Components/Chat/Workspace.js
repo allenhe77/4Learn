@@ -127,6 +127,9 @@ const Workspace = (props) => {
             <button onClick={handleClickAddOwn}> MY own work</button>
             {userAddOwn ? (
               <UserEditWork
+                currentQuestion={currentQuestion}
+                userName={props.userName}
+                questions={questions}
                 onClickExit={handleClickUserExit}
                 onClickSave={handleClickUserSave}
               />
@@ -139,6 +142,9 @@ const Workspace = (props) => {
             <button onClick={handleClickAddOwn}> MY own work</button>
             {userAddOwn ? (
               <UserEditWork
+                currentQuestion={currentQuestion}
+                userName={props.userName}
+                questions={questions}
                 onClickExit={handleClickUserExit}
                 onClickSave={handleClickUserSave}
               />

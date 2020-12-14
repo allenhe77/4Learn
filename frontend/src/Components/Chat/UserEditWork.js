@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import "./UserEditWork.css";
 
 const UserEditWork = (props) => {
-  const [userWork, setUserWork] = useState("");
+  const [userWork, setUserWork] = useState(
+    props.questions[props.currentQuestion][props.userName]
+  );
+  console.log("hints");
+
   return (
     <div className="user-addwork-dialog">
       <dialog open>
