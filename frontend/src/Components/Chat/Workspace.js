@@ -124,7 +124,10 @@ const Workspace = (props) => {
 
         {getUser.length === 0 ? (
           <div>
-            <button onClick={handleClickAddOwn}> MY own work</button>
+            <button onClick={handleClickAddOwn} className="my-own-work">
+              {" "}
+              Edit my own work
+            </button>
             {userAddOwn ? (
               <UserEditWork
                 currentQuestion={currentQuestion}
@@ -139,7 +142,10 @@ const Workspace = (props) => {
           </div>
         ) : (
           <div className="container-user-workspace-button">
-            <button onClick={handleClickAddOwn}> MY own work</button>
+            <button onClick={handleClickAddOwn} className="my-own-work">
+              {" "}
+              Edit my own work
+            </button>
             {userAddOwn ? (
               <UserEditWork
                 currentQuestion={currentQuestion}
