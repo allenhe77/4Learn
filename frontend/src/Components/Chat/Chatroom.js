@@ -94,8 +94,8 @@ const Chatroom = (props) => {
                     <p className="my-message">{e.message}</p>{" "}
                   </div>
                 ) : (
-                  <div>
-                    <p className="other-user">{e.from}</p>{" "}
+                  <div className="container-other-user">
+                    <p className="other-users">{e.from}</p>{" "}
                     <p className="other-message">{e.message}</p> <br />
                   </div>
                 )}

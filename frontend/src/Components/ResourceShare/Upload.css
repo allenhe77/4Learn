@@ -1,13 +1,25 @@
 .container-upload dialog {
   display: flex;
   flex-direction: column;
-  z-index: 0;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 1000px;
+  height: 600px;
+  font-size: 20px;
 }
 
-dialog input {
+.container-upload dialog input {
   margin-bottom: 20px;
+  height: 50px;
+  font-size: 20px;
 }
 
-dialog button {
+.container-upload dialog button {
   margin-bottom: 20px;
+  font-size: 20px;
 }
