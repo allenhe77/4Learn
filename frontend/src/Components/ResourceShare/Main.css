@@ -1,7 +1,6 @@
 .outer-link {
   display: flex;
   justify-content: center;
-  background: aqua;
   height: 100vh;
   margin-top: 30px;
   flex-direction: column;
