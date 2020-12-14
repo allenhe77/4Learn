@@ -23,6 +23,8 @@ const Upload = (props) => {
 
     setLink("");
     setLinkName("");
+    alert("Uploaded");
+    window.location.reload();
   };
 
   return (

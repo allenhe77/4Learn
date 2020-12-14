@@ -14,6 +14,7 @@ import ChatroomOverview from "./Components/Chat/ChatroomOverview";
 import Admin from "./Components/Admin/Admin";
 
 import Main from "./Components/ResourceShare/Main";
+import AdminLogin from "./Components/Admin/AdminLogin";
 
 function App() {
   return (
@@ -56,6 +57,9 @@ function App() {
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/adminlogin">
+          <AdminLogin />
         </Route>
         <Route>
           <Main />

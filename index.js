@@ -146,7 +146,7 @@ app.put("/askquestion", async (req, res) => {
   );
   const deleteResult = await adminDeletequestion(req.body.id);
   result
-    ? res.send("question posted success")
+    ? res.redirect("/admin")
     : res.send("there was an error while posting");
 });
 
@@ -167,7 +167,7 @@ app.post("/adminquestion", async (req, res) => {
     questionNumber: req.body.questionNumber,
   };
   console.log(req.body.id);
-  console.log("adsd");
+
   const result = await adminQuestion(
     req.body.title,
     req.body.area,
@@ -183,7 +183,7 @@ app.post("/adminquestion", async (req, res) => {
 app.delete("/admindeletequestion", async (req, res) => {
   const result = await adminDeletequestion(req.body.id);
 
-  res.send("deleted");
+  res.redirect("/admin");
 });
 
 app.get("/answerquestion", async (req, res) => {
@@ -297,6 +297,15 @@ app.put("/resourcerate", async (req, res) => {
   console.log(id);
   const result = await resourceRate(id, rate);
   res.send("asd");
+});
+
+app.post("/adminlogins", (req, res) => {
+  console.log();
+  if (req.body.password === process.env.ADMINPASS) {
+    res.redirect("/admin");
+  } else {
+    res.send("Invalid Credentials");
+  }
 });
 
 //serve static assets in production

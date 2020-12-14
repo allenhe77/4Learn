@@ -22,6 +22,10 @@ const AdminQuestion = (props) => {
         month: props.tags.month,
         questionNumber: props.tags.questionNumber,
       }),
+    }).then((response) => {
+      if (response.redirected) {
+        window.location.href = response.url;
+      }
     });
   };
 
@@ -34,6 +38,10 @@ const AdminQuestion = (props) => {
       body: JSON.stringify({
         id: props.id,
       }),
+    }).then((response) => {
+      if (response.redirected) {
+        window.location.href = response.url;
+      }
     });
   };
 
