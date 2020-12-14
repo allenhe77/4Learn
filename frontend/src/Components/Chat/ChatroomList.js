@@ -31,7 +31,7 @@ const ChatroomList = () => {
   }, []);
   return (
     <div className="chatroom-list">
-      {<h3>Chatroom Availabe</h3>}
+      {<h3>Chatroom Available</h3>}
       {loading ? (
         <p>loading ...</p>
       ) : (

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AddQuestion.css";
 
 const AddQuestion = (props) => {
   const [question, setQuestion] = useState("");
@@ -18,10 +19,13 @@ const AddQuestion = (props) => {
       <input
         type="text"
         name="question"
+        className="input-add-question"
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
       />
-      <button onClick={handleClick}>Add Question Host</button>
+      <button onClick={handleClick} className="add-question-button">
+        Add Question{" "}
+      </button>
     </div>
   );
 };
