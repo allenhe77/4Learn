@@ -8,7 +8,7 @@ const ChatroomListButton = (props) => {
       .find((row) => row.startsWith("access-token"))
       .split("=")[1];
 
-    fetch(`/enterchatroom/${props.roomId}/${userName}`, {
+    fetch(`/enterchatroom/${props.roomId}/${props.chatroomname}/${userName}`, {
       method: "GET",
       redirect: "follow",
     }).then((response) => {

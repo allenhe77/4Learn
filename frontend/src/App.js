@@ -48,7 +48,10 @@ function App() {
           <ChatroomOverview />
         </Route>
 
-        <Route path="/chatroom/:roomId/:userName" component={Chatroom}>
+        <Route
+          path="/chatroom/:roomId/:roomName/:userName"
+          component={Chatroom}
+        >
           {/* <Chatroom /> */}
         </Route>
         <Route path="/admin">

@@ -220,16 +220,17 @@ app.post("/createchatroom", async (req, res) => {
   result ? res.redirect(`/chatroomoverview`) : res.send("failed");
 });
 
-app.get("/enterchatroom/:roomId/:userToken", (req, res) => {
+app.get("/enterchatroom/:roomId/:roomName/:userToken", (req, res) => {
   const roomId = req.params.roomId;
   const userToken = req.params.userToken;
+  const roomName = req.params.roomName;
   console.log(userToken);
   const userName = jwt_decode(userToken).userName;
   console.log(userName);
 
   //send client roomid and username entering the chatroom
 
-  res.redirect(`/chatroom/${roomId}/${userName}`);
+  res.redirect(`/chatroom/${roomId}/${roomName}/${userName}`);
 });
 
 app.get("/chatroomlist", async (req, res) => {
