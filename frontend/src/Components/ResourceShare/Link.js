@@ -55,7 +55,9 @@ const Link = (props) => {
 
       <div class="desc">
         <p>
-          <a href={props.link}>{props.linkName}</a>
+          <a href={props.link} target="_blank">
+            {props.linkName}
+          </a>
         </p>
       </div>
       <p class="link-user">Submitted by {props.userName}</p>
