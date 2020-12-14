@@ -25,6 +25,7 @@ const jwt = require("jsonwebtoken");
 const io = require("socket.io")(http);
 const { v4: uuidv4 } = require("uuid");
 
+const md5 = require("md5");
 const jwt_decode = require("jwt-decode");
 const querworkspace = require("./querworkspace");
 const { link } = require("fs");
@@ -91,7 +92,7 @@ app.post("/register", async (req, res) => {
     const result = await insertDb(
       req.body.name,
       req.body.email,
-      req.body.password
+      md5(req.body.password)
     ).catch(console.dir);
     if (result) {
       res.redirect("/chatroomoverview");
