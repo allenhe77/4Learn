@@ -94,7 +94,7 @@ app.post("/register", async (req, res) => {
       req.body.password
     ).catch(console.dir);
     if (result) {
-      res.redirect("/dashboard");
+      res.redirect("/chatroomoverview");
     } else {
       res.send("registration failed");
     }
@@ -121,7 +121,7 @@ app.post("/login", async (req, res) => {
 
     //users[username].refreshToken = refreshToken;
     res.cookie("access-token", accessToken, { maxAge: 600000000 });
-    res.redirect("/dashboard");
+    res.redirect("/chatroomoverview");
   } catch (err) {
     console.error(err);
     res.send(err);
