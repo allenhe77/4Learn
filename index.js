@@ -192,15 +192,15 @@ app.get("/answerquestion", async (req, res) => {
   res.json(result);
 });
 
-app.post("/answerquestion", async (req, res) => {
+app.put("/answerquestion", async (req, res) => {
   const id = req.body.id;
   const userName = jwt_decode(req.body.userName).userName;
   const answer = req.body.answer;
-  console.log(answer);
+  console.log(answer, userName, id);
 
   const result = await answerQuestion(answer, userName, id);
 
-  res.send("success");
+  res.send("answer received");
 });
 
 app.get("/queryworkspace", async (req, res) => {

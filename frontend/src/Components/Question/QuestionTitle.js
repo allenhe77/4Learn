@@ -20,6 +20,7 @@ const QuestionTitle = (props) => {
       <br />
       {modal ? (
         <AnswerModal
+          id={props.id}
           exit={handleClickExit}
           answer={props.answer}
           tags={props.tags}
