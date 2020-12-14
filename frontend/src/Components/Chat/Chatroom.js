@@ -80,7 +80,9 @@ const Chatroom = (props) => {
           ))}
         </div> */}
         <div className="outer">
-          <p className="room-title">Chatroom 101 in session!</p>
+          <p className="room-title">
+            You are currently in room: {props.match.params.roomName}
+          </p>
 
           <div className="container-message">
             {message.map((e) => (
