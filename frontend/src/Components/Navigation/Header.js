@@ -22,12 +22,12 @@ const Header = () => {
           <Link to="/answerquestion">
             <li>Answer Question</li>
           </Link>
-          <Link to="/register">
+          {/* <Link to="/register">
             <li>Register</li>
           </Link>
           <Link to="/login">
             <li>Login</li>
-          </Link>
+          </Link> */}
 
           <Link to="/chatroomoverview">
             <li>Chatroom</li>
