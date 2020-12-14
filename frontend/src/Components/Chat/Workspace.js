@@ -113,7 +113,11 @@ const Workspace = (props) => {
             <button className="button-back">Back</button>
 
             {Object.keys(questions).map((e) => (
-              <QuestionButton question={e} onClick={() => handleClick(e)} />
+              <QuestionButton
+                question={e}
+                onClick={() => handleClick(e)}
+                currentQuestion={currentQuestion}
+              />
             ))}
           </div>
         )}

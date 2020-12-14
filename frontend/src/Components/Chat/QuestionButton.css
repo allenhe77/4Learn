@@ -1,10 +1,17 @@
 .question-button button {
   width: 70px;
   height: 75px;
-  background: #23d951;
 }
 
 .question-button {
   margin-left: 30px;
   margin-bottom: 17px;
+}
+
+.selected {
+  background: #23d951;
+}
+
+.notselected {
+  background: gray;
 }
