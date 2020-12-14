@@ -32,7 +32,7 @@ const Header = () => {
           <Link to="/chatroomoverview">
             <li>Chatroom</li>
           </Link>
-          <Link to="/admin">
+          <Link to="/adminlogin">
             <li>Admin Page</li>
           </Link>
           <Link to="/resource">
