@@ -95,6 +95,13 @@ app.post("/register", async (req, res) => {
       md5(req.body.password)
     ).catch(console.dir);
     if (result) {
+      let payload = { userName: req.body.name };
+      console.log(payload);
+
+      let accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "5d",
+      });
+      res.cookie("access-token", accessToken, { maxAge: 600000000 });
       res.redirect("/chatroomoverview");
     } else {
       res.send("registration failed");

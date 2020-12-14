@@ -13,6 +13,8 @@ const Register = () => {
       <form action="/register" method="POST">
         <label for="userName">User Name</label>
         <input
+          minLength="4"
+          required
           type="text"
           name="name"
           placeholder="John Doe"
@@ -25,6 +27,7 @@ const Register = () => {
         <br />
         <label for="email">Email</label>
         <input
+          required
           type="email"
           name="email"
           placeholder="123@example.com"
@@ -39,6 +42,8 @@ const Register = () => {
         <br />
         <label for="pasword">Password</label>{" "}
         <input
+          required
+          minLength="7"
           type="password"
           name="password"
           onChange={(e) => {

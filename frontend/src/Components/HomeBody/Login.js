@@ -12,6 +12,8 @@ const Login = () => {
       <form action="/login" method="POST">
         <label for="userName">User Name</label>
         <input
+          minLength="4"
+          required
           type="text"
           name="name"
           placeholder="John Doe"
@@ -24,6 +26,7 @@ const Login = () => {
         <br />
         <label for="email">Email</label>
         <input
+          required
           type="email"
           name="email"
           placeholder="123@example.com"
@@ -38,6 +41,8 @@ const Login = () => {
         <br />
         <label for="pasword">Password</label>{" "}
         <input
+          minLength="7"
+          required
           type="password"
           name="password"
           onChange={(e) => {
