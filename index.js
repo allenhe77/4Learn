@@ -48,6 +48,8 @@ const PORT = process.env.PORT || 5000;
 // websocket io for chatroom
 io.on("connection", (socket) => {
   console.log("user connected");
+  let room = socket.handshake.query.room;
+  socket.join(room);
 
   // socket.on("clientmessage", (data) => {
   //   console.log(data.message);
@@ -59,7 +61,7 @@ io.on("connection", (socket) => {
   // });
 
   socket.on("chat-message", (data) => {
-    socket.broadcast.emit("broadcast", {
+    socket.to(room).emit("message", {
       message: data.message,
       from: jwt.decode(data.from).userName,
     });
@@ -81,6 +83,7 @@ io.on("connection", (socket) => {
   // );
 
   socket.on("disconnect", () => {
+    socket.leave(room);
     console.log("user disconnected");
   });
 });
