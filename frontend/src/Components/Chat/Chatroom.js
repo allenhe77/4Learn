@@ -13,7 +13,7 @@ const Chatroom = (props) => {
   const socket = useRef(0);
 
   //only run oncejjjjjjjjj
-
+  console.log(props.roomName);
   useEffect(() => {
     //config the socket with re connect
 
@@ -23,12 +23,12 @@ const Chatroom = (props) => {
       reconnectionDelay: 1000,
       reconnectionDelayMax: 5000,
       randomizationFactor: 0.5,
+      query: {
+        room: props.match.params.roomName,
+      },
     });
 
-    socket.current.on("server-message", (data) => {
-      setMessage((message) => [...message, data]);
-    });
-    socket.current.on("broadcast", (data) => {
+    socket.current.on("message", (data) => {
       setMessage((message) => [...message, data]);
     });
     setUserName(
